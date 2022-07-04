@@ -5,32 +5,25 @@ import Head from "next/head"
 import Link from "next/link"
 import {useMDXComponent} from "next-contentlayer/hooks"
 import {Button} from "components"
-import * as U from "lib/utils"
 
-// HomePage
-type HomePageProps = Payload & {}
+type TestimonialsPageProps = Payload & {}
 
-export default function HomePage({home, recentPosts, recentTestimonials}: HomePageProps) : JSX.Element {
-  const MDXContent = useMDXComponent(home.body.code)
+export default function TestimonialsPage({page, testimonials}: TestimonialsPageProps) : JSX.Element {
+  const MDXContent = useMDXComponent(page.body.code)
 
   return <>
     <Head>
-      <title>{home.title}</title>
+      <title>{page.title}</title>
     </Head>
     <main>
-      <h1>{home.title}</h1>
+      <h1>{page.title}</h1>
 
       <div>
         <MDXContent components={{Button}}/>
       </div>
 
-      <h2>Recent Posts+</h2>
-      {recentPosts.map((post, i) => (
-        <PostCard key={i} post={post}/>
-      ))}
-
-      <h2>Recent Testimonials</h2>
-      {recentTestimonials.map((testimonial, i) => (
+      <h2>Testimonials</h2>
+      {testimonials.map((testimonial, i) => (
         <TestimonialCard key={i} testimonial={testimonial}/>
       ))}
     </main>
@@ -81,27 +74,25 @@ function TestimonialCard({testimonial} : TestimonialCardProps) : JSX.Element {
 
 // SSR /////////////////////////////////////////////////////////////////////////////////////////////
 type Payload = {
-  home: Page
-  recentPosts: Post[]
-  recentTestimonials: Testimonial[]
+  page: Page
+  testimonials: Testimonial[]
 }
 
 type Params = ParsedUrlQuery
 
 export const getStaticProps: GetStaticProps<Payload, Params> = async ({params}) => {
   const url = "/"
-  const home = allPages.find(p => p.url == url)
+  const page = allPages.find(p => p.url == url)
 
-  if (!home) {
+  if (!page) {
     throw new Error("...")
   }
 
-  const recentPosts = [...allPosts].sort(U.byCreatedAtDesc).slice(0, 3)
-  const recentTestimonials = [...allTestimonials].sort(U.byCreatedAtDesc).slice(0, 3)
+  const testimonials = [...allTestimonials]
 
   return {
     props: {
-      home, recentPosts, recentTestimonials,
+      page, testimonials,
     }
   }
 }
