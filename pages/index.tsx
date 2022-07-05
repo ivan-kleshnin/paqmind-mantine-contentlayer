@@ -8,7 +8,7 @@ import {Button} from "components"
 import * as U from "lib/utils"
 
 // HomePage
-type HomePageProps = Payload & {}
+type HomePageProps = Payload
 
 export default function HomePage({home, recentPosts, recentTestimonials}: HomePageProps) : JSX.Element {
   const MDXContent = useMDXComponent(home.body.code)
@@ -88,7 +88,7 @@ type Payload = {
 
 type Params = ParsedUrlQuery
 
-export const getStaticProps: GetStaticProps<Payload, Params> = async ({params}) => {
+export const getStaticProps: GetStaticProps<Payload, Params> = async () => {
   const url = "/"
   const home = allPages.find(p => p.url == url)
 

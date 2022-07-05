@@ -63,7 +63,7 @@ type Payload = {
 
 type Params = ParsedUrlQuery
 
-export const getStaticProps: GetStaticProps<Payload, Params> = async ({params}) => {
+export const getStaticProps: GetStaticProps<Payload, Params> = async () => {
   const url = "/blog"
   const blog = allPages.find(p => p.url == url)
 

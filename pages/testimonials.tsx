@@ -1,12 +1,11 @@
-import {Page, Post, Testimonial, allPages, allPosts, allTestimonials} from "contentlayer/generated"
+import {Page, Testimonial, allPages, allTestimonials} from "contentlayer/generated"
 import {ParsedUrlQuery} from "querystring"
 import {GetStaticProps} from "next"
 import Head from "next/head"
-import Link from "next/link"
 import {useMDXComponent} from "next-contentlayer/hooks"
 import {Button} from "components"
 
-type TestimonialsPageProps = Payload & {}
+type TestimonialsPageProps = Payload
 
 export default function TestimonialsPage({page, testimonials}: TestimonialsPageProps) : JSX.Element {
   const MDXContent = useMDXComponent(page.body.code)
@@ -27,28 +26,6 @@ export default function TestimonialsPage({page, testimonials}: TestimonialsPageP
         <TestimonialCard key={i} testimonial={testimonial}/>
       ))}
     </main>
-  </>
-}
-
-// PostCard
-type PostCardProps = {
-  post: Post
-}
-
-function PostCard({post} : PostCardProps) : JSX.Element {
-  return <>
-    <div>
-      <h2>
-        <Link href={post.url}>
-          <a>{post.title}</a>
-        </Link>
-      </h2>
-      <div>
-        <time dateTime={post.createdAt}>
-          {new Date(post.createdAt).toLocaleDateString()}
-        </time>
-      </div>
-    </div>
   </>
 }
 
@@ -80,7 +57,7 @@ type Payload = {
 
 type Params = ParsedUrlQuery
 
-export const getStaticProps: GetStaticProps<Payload, Params> = async ({params}) => {
+export const getStaticProps: GetStaticProps<Payload, Params> = async () => {
   const url = "/"
   const page = allPages.find(p => p.url == url)
 

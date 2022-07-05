@@ -21,8 +21,7 @@
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "**/*.ts", "**/*.tsx",
     ".contentlayer/generated"
   ],
   "exclude": ["node_modules"]

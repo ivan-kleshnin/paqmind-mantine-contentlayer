@@ -1,8 +1,7 @@
-import {Post, allPosts, Page} from "contentlayer/generated"
+import {Post, allPosts} from "contentlayer/generated"
 import {ParsedUrlQuery} from "querystring"
 import {GetStaticProps, GetStaticPaths} from "next"
 import Head from "next/head"
-import Link from "next/link"
 import {useMDXComponent} from "next-contentlayer/hooks"
 import {Button} from "components"
 

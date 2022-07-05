@@ -1,8 +1,7 @@
-import {Account, Post, allAccounts, Page} from "contentlayer/generated"
+import {Account, allAccounts} from "contentlayer/generated"
 import {ParsedUrlQuery} from "querystring"
 import {GetStaticProps, GetStaticPaths} from "next"
 import Head from "next/head"
-import Link from "next/link"
 
 type AccountPageProps = {
   account: Account
