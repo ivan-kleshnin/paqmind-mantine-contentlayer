@@ -142,12 +142,19 @@ const Post = defineDocumentType(() => ({
     title: {
       type: "string", required: true,
     },
+    intro: {
+      type: "markdown", required: true,
+    },
     createdAt: {
       type: "date", required: true,
     },
     editedAt: {
       type: "date", required: false,
     },
+    tags: {
+      type: "list",
+      of: {type: "string"},
+    }
   },
   computedFields: {
     url: {

@@ -1,15 +1,24 @@
 import "@fontsource/open-sans/variable.css"
 import {Global, MantineProvider} from "@mantine/core"
+import type {NextPage} from "next"
 import type {AppProps} from "next/app"
 import Head from "next/head"
 import {Layout} from "layout"
 import "styles/reset.css"
 
-export default function App({Component, pageProps}: AppProps): JSX.Element {
+export type NextPageWithLayout = NextPage & {
+  layoutSize?: "md" | "lg"
+}
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+
+export default function App({Component, pageProps}: AppPropsWithLayout): JSX.Element {
   return <>
     <Head>
       <title>Paqmind</title>
-      <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width"/>
+      <meta name="viewport" content="minimum-scale=1, initial-scale=1.25, width=device-width"/>
     </Head>
 
     <MantineProvider
@@ -64,7 +73,7 @@ export default function App({Component, pageProps}: AppProps): JSX.Element {
           },
         ]}
       />
-      <Layout>
+      <Layout size={Component.layoutSize}>
         <Component {...pageProps}/>
       </Layout>
     </MantineProvider>

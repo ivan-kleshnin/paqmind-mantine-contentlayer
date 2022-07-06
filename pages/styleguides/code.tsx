@@ -1,7 +1,7 @@
 import {Box, Container, Code, Text, Title} from "@mantine/core"
 import {Prism} from "@mantine/prism"
 import * as React from "react"
-import {Typography} from "components/Typography/Typography"
+import {Typography} from "components"
 
 export default function TextPage() {
   return <Box m={32}>

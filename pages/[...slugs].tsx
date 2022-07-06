@@ -1,31 +1,33 @@
-import {Button, Container} from "@mantine/core"
+import {Container} from "@mantine/core"
 import {Page, allPages} from "contentlayer/generated"
 import {ParsedUrlQuery} from "querystring"
 import {GetStaticProps, GetStaticPaths} from "next"
 import Head from "next/head"
 import {useMDXComponent} from "next-contentlayer/hooks"
-import {Typography} from "components/Typography/Typography"
+import {Typography} from "components"
 
 // AnyPage
-type AnyPageProps = {
-  page: Page
-}
+type AnyPageProps = Payload // & some Next stuff
 
 export default function AnyPage({page} : AnyPageProps) : JSX.Element {
   const MDXContent = useMDXComponent(page.body.code)
 
-  return <Container size="lg">
+  return <>
     <Head>
       <title>{page.title}</title>
     </Head>
-    <article>
-      <Typography>
-        <h1>{page.title}</h1>
-        <MDXContent components={{Button}}/>
-      </Typography>
-    </article>
-  </Container>
+    <Container size={AnyPage.layoutSize} mt={32} mb={40}>
+      <article>
+        <Typography>
+          <h1>{page.title}</h1>
+          <MDXContent/>
+        </Typography>
+      </article>
+    </Container>
+  </>
 }
+
+AnyPage.layoutSize = "sm" as const
 
 // SSR /////////////////////////////////////////////////////////////////////////////////////////////
 type Payload = {

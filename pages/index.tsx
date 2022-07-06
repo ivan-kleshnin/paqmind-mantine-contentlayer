@@ -1,83 +1,98 @@
+import {Box, Container, Stack, Title} from "@mantine/core"
 import {Page, Post, Testimonial, allPages, allPosts, allTestimonials} from "contentlayer/generated"
 import {ParsedUrlQuery} from "querystring"
 import {GetStaticProps} from "next"
 import Head from "next/head"
-import Link from "next/link"
 import {useMDXComponent} from "next-contentlayer/hooks"
-import {Button} from "components"
+import {/*Carousel,*/ HorizontalCard, Link, Typography} from "components"
 import * as U from "lib/utils"
 
 // HomePage
-type HomePageProps = Payload
+type HomePageProps = Payload // & some Next stuff
 
-export default function HomePage({home, recentPosts, recentTestimonials}: HomePageProps) : JSX.Element {
+export default function HomePage({home, recentPosts/*, recentTestimonials*/}: HomePageProps) : JSX.Element {
   const MDXContent = useMDXComponent(home.body.code)
 
   return <>
     <Head>
       <title>{home.title}</title>
     </Head>
-    <main>
-      <h1>{home.title}</h1>
+    <Container size={HomePage.layoutSize} mt={32} mb={40}>
+      <article>
+        <Typography>
+          <h1>{home.title}</h1>
+          <MDXContent/>
+        </Typography>
 
-      <div>
-        <MDXContent components={{Button}}/>
-      </div>
+        <Title order={2} mt={32} mb={24}>Recent Posts</Title>
+        <Stack spacing={24}>
+          {recentPosts.map((post, i) => (
+            <HorizontalCard
+              key={i}
+              title={post.title}
+              intro={post.intro.html}
+              postedAt={post.createdAt}
+              tags={post.tags?.map(t => t.toLowerCase())}
+              url={post.url}
+            />
+          ))}
+        </Stack>
+        <Box component="p" mt={20}>
+          &#128073; Read more posts on our <Link href="#">Blog</Link> page.
+        </Box>
 
-      <h2>Recent Posts+</h2>
-      {recentPosts.map((post, i) => (
-        <PostCard key={i} post={post}/>
-      ))}
+        {/*<h2>Recent Testimonials</h2>
+        {recentTestimonials.map((testimonial, i) => (
+          <TestimonialCard key={i} testimonial={testimonial}/>
+        ))}*/}
 
-      <h2>Recent Testimonials</h2>
-      {recentTestimonials.map((testimonial, i) => (
-        <TestimonialCard key={i} testimonial={testimonial}/>
-      ))}
-    </main>
-  </>
-}
-
-// PostCard
-type PostCardProps = {
-  post: Post
-}
-
-function PostCard({post} : PostCardProps) : JSX.Element {
-  return <>
-    <div>
-      <h2>
-        <Link href={post.url}>
-          <a>{post.title}</a>
-        </Link>
-      </h2>
-      <div>
-        <time dateTime={post.createdAt}>
-          {new Date(post.createdAt).toLocaleDateString()}
-        </time>
-      </div>
-    </div>
+        {/*<Title order={2} mt={32} mb={24}>Recent Testimonials</Title>
+        <Carousel
+          items={[
+            {
+              body: `<p>Extend default theme with any amount of additional colors, replace shadows, radius, spacing, fonts and many other properties to match your design requirements. Mantine theme is just an object, you can subscribe to it in any part of application via context and use it to build your own components.</p>`,
+              createdAt: new Date().toLocaleDateString(),
+              author: {
+                name: "John Doe",
+                image: "https://images.unsplash.com/photo-1624298357597-fd92dfbec01d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=80"
+              },
+            },
+            {
+              body: `<p>Replace shadows, radius, spacing, fonts and many other properties to match your design requirements. Mantine theme is just an object, you can subscribe to it in any part of application via context and use it to build your own components.</p>`,
+              createdAt: new Date().toLocaleDateString(),
+              author: {
+                name: "Jane Doe",
+                image: "https://images.unsplash.com/photo-1624298357597-fd92dfbec01d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=80"
+              },
+            }
+          ]}
+        />*/}
+      </article>
+    </Container>
   </>
 }
 
 // TestimonialCard
-type TestimonialCardProps = {
-  testimonial: Testimonial
-}
+// type TestimonialCardProps = {
+//   testimonial: Testimonial
+// }
+//
+// function TestimonialCard({testimonial} : TestimonialCardProps) : JSX.Element {
+//   return <>
+//     <div>
+//       <div>
+//         <time dateTime={testimonial.createdAt}>
+//           {new Date(testimonial.createdAt).toLocaleDateString()}
+//         </time>
+//       </div>
+//       <div>
+//         <div dangerouslySetInnerHTML={{__html: testimonial.body.html}}/>
+//       </div>
+//     </div>
+//   </>
+// }
 
-function TestimonialCard({testimonial} : TestimonialCardProps) : JSX.Element {
-  return <>
-    <div>
-      <div>
-        <time dateTime={testimonial.createdAt}>
-          {new Date(testimonial.createdAt).toLocaleDateString()}
-        </time>
-      </div>
-      <div>
-        <div dangerouslySetInnerHTML={{__html: testimonial.body.html}}/>
-      </div>
-    </div>
-  </>
-}
+HomePage.layoutSize = "lg" as const
 
 // SSR /////////////////////////////////////////////////////////////////////////////////////////////
 type Payload = {

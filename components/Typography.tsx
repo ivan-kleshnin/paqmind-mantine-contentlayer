@@ -15,6 +15,9 @@ export const Typography = forwardRef<HTMLDivElement, TypographyProps>((props: Ty
 
 Typography.displayName = "@mantine/core/Typography"
 
+// textAlign: "justify",
+// hyphens: "auto",
+
 const useStyles = createStyles((theme) => {
   const headings = R.keys(theme.headings.sizes).reduce((acc, h) => {
     acc[`& ${h}`] = {
@@ -51,12 +54,15 @@ const useStyles = createStyles((theme) => {
 
       "& img": {
         maxWidth: "100%",
-        marginBottom: theme.spacing.xs,
+        marginTop: theme.spacing.lg,
+        marginBottom: theme.spacing.lg,
       },
 
       "& p": {
-        marginTop: 0,
+        hyphens: "auto",
+        marginTop: theme.spacing.lg,
         marginBottom: theme.spacing.lg,
+        textAlign: "justify",
       },
 
       "& hr": {
@@ -105,7 +111,7 @@ const useStyles = createStyles((theme) => {
       },
 
       "& ul, & ol": {
-        marginBottom: theme.spacing.md,
+        marginBottom: theme.spacing.lg,
         paddingLeft: theme.spacing.lg * 2,
 
         "& li": {

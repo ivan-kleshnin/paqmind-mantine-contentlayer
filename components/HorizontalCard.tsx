@@ -1,20 +1,21 @@
+import {Group, Paper, Text, Title, useMantineTheme} from "@mantine/core"
 import React from "react"
-import {Box, Group, Paper, Text, Title, useMantineTheme} from "@mantine/core"
-import {Link} from "components"
+import {Link, Typography} from "components"
 
 interface HorizontalCardProps {
   postedAt: string
   title: string
-  body: string
+  intro: string
   tags?: string[]
+  url?: string
 }
 
-export function HorizontalCard({postedAt, title, body, tags = []}: HorizontalCardProps) {
+export function HorizontalCard({postedAt, url, title, intro, tags = []}: HorizontalCardProps) {
   const theme = useMantineTheme()
 
   return <>
     <Paper
-      p="1.5rem"
+      px="1.5rem"
       sx={{
         position: "relative",
         "&::before": {
@@ -28,34 +29,44 @@ export function HorizontalCard({postedAt, title, body, tags = []}: HorizontalCar
         },
       }}
     >
-      <Title order={3}>
-        {title}
+      <Title order={3} mt={16}>
+        {url ? <Link asText href={url}>{title}</Link> : title}
       </Title>
-      <Text color="dimmed">
-        Posted: {postedAt}
+      <Text color="dimmed" mb={-8}>
+        Posted: {new Date(postedAt).toLocaleDateString()}
       </Text>
-      <Box
-        my={8}
-        sx={{
-          "& > p": {
-            textAlign: "justify",
-            hyphens: "auto",
-          },
-          "& > p:last-child": {
-            marginBottom: 0,
-          },
-        }}
-        dangerouslySetInnerHTML={{__html: body}}
-      />
-      <Group>
-        {
-          tags.map((tag, i) =>
-            <Link key={i} href="#">
-              <strong><code>#{tag}</code></strong>
-            </Link>
-          )
-        }
-      </Group>
+      <Typography>
+        <div dangerouslySetInnerHTML={{__html: intro}}/>
+      </Typography>
+      {Boolean(tags.length) &&
+        <Group mb={20} mt={-8}>
+          {
+            tags.map((tag, i) =>
+              <Link key={i} href="#">
+                <strong><code>#{tag}</code></strong>
+              </Link>
+            )
+          }
+        </Group>
+      }
     </Paper>
   </>
 }
+
+// > The following version correctly clamps the content but there're problems with margins as
+// > -webkit-box doesn't behave normally and p's margins are ignored. To avoid multiple hacks
+// > I've decided to rely on a dedicated `intro` document property.
+
+// <Box className="clamp" sx={{
+//   "& div": {
+//     overflow: "hidden",
+//     display: "-webkit-box",
+//     WebkitLineClamp: "3",
+//     WebkitBoxOrient: "vertical",
+//     marginBottom: 20,
+//   }
+// }}>
+//   <Typography>
+//     <MDXContent/>
+//   </Typography>
+// </Box>
