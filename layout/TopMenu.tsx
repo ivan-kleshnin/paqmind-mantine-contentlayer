@@ -33,7 +33,9 @@ export function TopMenu({opened, toggle, size}: TopMenuProps): JSX.Element {
                 <Link href="/testimonials" asText>
                   Testimonials
                 </Link>
-                <Link href="https://paqmind.com/blog"  asText>Blog</Link>
+                <Link href="https://paqmind.com/blog" asText>
+                  Blog
+                </Link>
               </Group>
             </MediaQuery>
           </Group>

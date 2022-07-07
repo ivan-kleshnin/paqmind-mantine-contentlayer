@@ -28,7 +28,17 @@
     "rambda": "^7.1.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tabler-icons-react": "^1.52.0"
+    "rehype-code-titles": "^1.1.0",
+    "rehype-prism-plus": "^1.4.2",
+    "remark-emoji": "^3.0.2",
+    "remark-gfm": "^3.0.1",
+    "remark-textr": "^5.0.1",
+    "remark-unwrap-images": "^3.0.1",
+    "tabler-icons-react": "^1.52.0",
+    "typographic-apostrophes": "^1.1.1",
+    "typographic-apostrophes-for-possessive-plurals": "^1.0.5",
+    "typographic-ellipses": "^1.0.11",
+    "typographic-quotes": "^2.0.1"
   },
   "devDependencies": {
     "@types/node": "18.0.0",

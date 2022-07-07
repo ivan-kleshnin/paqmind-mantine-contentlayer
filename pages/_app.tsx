@@ -5,6 +5,7 @@ import type {AppProps} from "next/app"
 import Head from "next/head"
 import {Layout} from "layout"
 import "styles/reset.css"
+import "styles/prisma.css"
 
 export type NextPageWithLayout = NextPage & {
   layoutSize?: "md" | "lg"
@@ -26,7 +27,7 @@ export default function App({Component, pageProps}: AppPropsWithLayout): JSX.Ele
       withNormalizeCSS
       defaultProps={{
         Anchor: {size: ""},
-        Code: {sx: {fontSize: "14px"}},
+        Code: {sx: {fontSize: "14px", padding: "4px 8px"}},
         Prism: {
           styles: {
             code: {fontSize: "14px"},
@@ -64,6 +65,7 @@ export default function App({Component, pageProps}: AppPropsWithLayout): JSX.Ele
 
             body: {
             //   ...theme.fn.fontStyles(),
+            //   backgroundColor: "white",
             //   // backgroundColor:/* theme.colorScheme === "dark" ? theme.colors.dark[7] :*/ theme.white,
             //   // color: /*theme.colorScheme === "dark" ? theme.colors.dark[0] :*/ theme.black,
             //   fontFamily: "Finlandica", // 'Open SansVariable', sans-serif",

@@ -1,4 +1,4 @@
-import {AppShell, useMantineTheme} from "@mantine/core"
+import {AppShell, Container, useMantineTheme} from "@mantine/core"
 import Head from "next/head"
 import * as React from "react"
 import {AppFooter, Sidebar, TopMenu} from "layout"
@@ -32,14 +32,16 @@ export function Layout({children, size = "lg"}: LayoutProps): JSX.Element {
           [theme.fn.largerThan(breakpoint)]: {
             display: "block",
           },
-          background: theme.colors.gray[0],
+          background: "white", // theme.colors.gray[0],
           minHeight: "calc(100vh - 5rem)",
           padding: 0,
           marginTop: "5rem",
         },
       }}
     >
-      {children}
+      <Container size={size} mt={32} mb={40}>
+        {children}
+      </Container>
     </AppShell>
   </>
 }

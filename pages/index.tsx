@@ -1,10 +1,10 @@
-import {Box, Container, Stack, Title} from "@mantine/core"
+import {Box, Group, Stack, Title} from "@mantine/core"
 import {Page, Post, Testimonial, allPages, allPosts, allTestimonials} from "contentlayer/generated"
 import {ParsedUrlQuery} from "querystring"
 import {GetStaticProps} from "next"
 import Head from "next/head"
 import {useMDXComponent} from "next-contentlayer/hooks"
-import {/*Carousel,*/ HorizontalCard, Link, Typography} from "components"
+import {Carousel, HorizontalCard, Link, Typography} from "components"
 import * as U from "lib/utils"
 
 // HomePage
@@ -17,58 +17,57 @@ export default function HomePage({home, recentPosts/*, recentTestimonials*/}: Ho
     <Head>
       <title>{home.title}</title>
     </Head>
-    <Container size={HomePage.layoutSize} mt={32} mb={40}>
-      <article>
-        <Typography>
-          <h1>{home.title}</h1>
-          <MDXContent/>
-        </Typography>
+    <article>
+      <Typography>
+        <h1>{home.title}</h1>
+        <MDXContent components={{Group}}/>
+      </Typography>
 
-        <Title order={2} mt={32} mb={24}>Recent Posts</Title>
-        <Stack spacing={24}>
-          {recentPosts.map((post, i) => (
-            <HorizontalCard
-              key={i}
-              title={post.title}
-              intro={post.intro.html}
-              postedAt={post.createdAt}
-              tags={post.tags?.map(t => t.toLowerCase())}
-              url={post.url}
-            />
-          ))}
-        </Stack>
-        <Box component="p" mt={20}>
-          &#128073; Read more posts on our <Link href="#">Blog</Link> page.
-        </Box>
+      <Title order={2} mt={32} mb={24}>Recent Posts</Title>
+      <Stack spacing={24}>
+        {recentPosts.map((post, i) => (
+          <HorizontalCard
+            key={i}
+            title={post.title}
+            intro={post.intro.html}
+            postedAt={post.createdAt}
+            tags={post.tags}
+            url={post.url}
+          />
+        ))}
+      </Stack>
+      <Box component="p" mt={20}>
+        &#128073; Read more posts on our <Link href="#">Blog</Link> page.
+      </Box>
 
-        {/*<h2>Recent Testimonials</h2>
-        {recentTestimonials.map((testimonial, i) => (
-          <TestimonialCard key={i} testimonial={testimonial}/>
-        ))}*/}
+      <Title order={2} mt={32} mb={24}>Recent Testimonials</Title>
 
-        {/*<Title order={2} mt={32} mb={24}>Recent Testimonials</Title>
-        <Carousel
-          items={[
-            {
-              body: `<p>Extend default theme with any amount of additional colors, replace shadows, radius, spacing, fonts and many other properties to match your design requirements. Mantine theme is just an object, you can subscribe to it in any part of application via context and use it to build your own components.</p>`,
-              createdAt: new Date().toLocaleDateString(),
-              author: {
-                name: "John Doe",
-                image: "https://images.unsplash.com/photo-1624298357597-fd92dfbec01d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=80"
-              },
+      {/*<h2>Recent Testimonials</h2>
+      {recentTestimonials.map((testimonial, i) => (
+        <TestimonialCard key={i} testimonial={testimonial}/>
+      ))}*/}
+
+      <Carousel
+        items={[
+          {
+            body: `<p>Extend default theme with any amount of additional colors, replace shadows, radius, spacing, fonts and many other properties to match your design requirements. Mantine theme is just an object, you can subscribe to it in any part of application via context and use it to build your own components.</p>`,
+            createdAt: new Date().toLocaleDateString(),
+            author: {
+              name: "John Doe",
+              image: "https://images.unsplash.com/photo-1624298357597-fd92dfbec01d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=80"
             },
-            {
-              body: `<p>Replace shadows, radius, spacing, fonts and many other properties to match your design requirements. Mantine theme is just an object, you can subscribe to it in any part of application via context and use it to build your own components.</p>`,
-              createdAt: new Date().toLocaleDateString(),
-              author: {
-                name: "Jane Doe",
-                image: "https://images.unsplash.com/photo-1624298357597-fd92dfbec01d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=80"
-              },
-            }
-          ]}
-        />*/}
-      </article>
-    </Container>
+          },
+          {
+            body: `<p>Replace shadows, radius, spacing, fonts and many other properties to match your design requirements. Mantine theme is just an object, you can subscribe to it in any part of application via context and use it to build your own components.</p>`,
+            createdAt: new Date().toLocaleDateString(),
+            author: {
+              name: "Jane Doe",
+              image: "https://images.unsplash.com/photo-1624298357597-fd92dfbec01d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=80"
+            },
+          }
+        ]}
+      />
+    </article>
   </>
 }
 

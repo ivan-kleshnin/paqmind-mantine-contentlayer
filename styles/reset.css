@@ -9,3 +9,14 @@ html, body, #__next {
 	margin: 0;
 	padding: 0;
 }
+
+/* Various fixed for MDX parsing which adds tons on unexpected paragraphs! */
+blockquote > p {
+	margin: 0 !important;
+}
+
+/* blockquote is not styled like Blockquote in Mantine (bug) */
+blockquote {
+	background-color: #F8F0FC;
+	border-radius: 4px;
+}

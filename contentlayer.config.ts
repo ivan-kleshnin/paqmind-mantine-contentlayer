@@ -168,4 +168,42 @@ const Post = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: "content",
   documentTypes: [Account, Testimonial, Page, Post],
+  mdx: {
+    remarkPlugins: [
+      remarkGfm,
+      remarkUnwrapImages,
+      remarkEmoji,
+      () => {
+        return remarkTextr({
+          plugins: [
+            "typographic-ellipses",
+            "typographic-apostrophes",
+            (str) => {
+              return typographicQuotes(str, {locale: "en-us"})
+            },
+            "typographic-apostrophes-for-possessive-plurals",
+          ]
+        })
+      },
+    ],
+    rehypePlugins: [
+      // rehypeSlug,
+      rehypeCodeTitles,
+      rehypePrism,
+      // rehypeAutolinkHeadings,
+      // rehypeAccessibleEmojis,
+   ],
+  },
 })
+
+import remarkGfm from "remark-gfm"
+import remarkUnwrapImages from "remark-unwrap-images"
+import remarkEmoji from "remark-emoji"
+import remarkTextr from "remark-textr"
+// import rehypeSlug from "rehype-slug"
+// import rehypeAutolinkHeadings from "rehype-autolink-headings"
+import rehypeCodeTitles from "rehype-code-titles"
+import rehypePrism from "rehype-prism-plus"
+// import { rehypeAccessibleEmojis } from "rehype-accessible-emojis"
+import typographicQuotes from "typographic-quotes"
+

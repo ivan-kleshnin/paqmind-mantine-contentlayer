@@ -10,7 +10,7 @@ interface HorizontalCardProps {
   url?: string
 }
 
-export function HorizontalCard({postedAt, url, title, intro, tags = []}: HorizontalCardProps) {
+export function HorizontalCard({postedAt, url, title, intro, tags}: HorizontalCardProps) {
   const theme = useMantineTheme()
 
   return <>
@@ -38,12 +38,12 @@ export function HorizontalCard({postedAt, url, title, intro, tags = []}: Horizon
       <Typography>
         <div dangerouslySetInnerHTML={{__html: intro}}/>
       </Typography>
-      {Boolean(tags.length) &&
+      {(tags && Boolean(tags.length)) &&
         <Group mb={20} mt={-8}>
           {
             tags.map((tag, i) =>
               <Link key={i} href="#">
-                <strong><code>#{tag}</code></strong>
+                <strong><code>#{tag.toLowerCase()}</code></strong>
               </Link>
             )
           }

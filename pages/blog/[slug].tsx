@@ -1,9 +1,11 @@
+import {Group, Text, Title} from "@mantine/core"
+import {Prism} from "@mantine/prism"
 import {Post, allPosts} from "contentlayer/generated"
 import {ParsedUrlQuery} from "querystring"
 import {GetStaticProps, GetStaticPaths} from "next"
 import Head from "next/head"
 import {useMDXComponent} from "next-contentlayer/hooks"
-import {Button} from "components"
+import {Link, Typography} from "components"
 
 type PostPageProps = {
   post: Post
@@ -17,16 +19,30 @@ export default function PostPage({post} : PostPageProps) : JSX.Element {
       <title>{post.title}</title>
     </Head>
     <article>
-      <h1>{post.title}</h1>
-      <time dateTime={post.createdAt}>
-        {new Date(post.createdAt).toLocaleDateString()}
-      </time>
-      <div>
-        <MDXContent components={{Button}}/>
-      </div>
+      <Title order={1}>{post.title}</Title>
+      <Text color="dimmed" component="time" dateTime={post.createdAt}>
+        Posted: {new Date(post.createdAt).toLocaleDateString()} by Ivan Kleshnin
+      </Text>
+      <Typography>
+        <MDXContent components={{Group, Prism}}/>
+        <hr/>
+      </Typography>
+      {post.tags && Boolean(post.tags.length) &&
+        <Group mb={20}>
+          {
+            post.tags.map((tag, i) =>
+              <Link key={i} href="#">
+                <strong><code>#{tag.toLowerCase()}</code></strong>
+              </Link>
+            )
+          }
+        </Group>
+      }
     </article>
   </>
 }
+
+PostPage.layoutSize = "sm" as const
 
 // SSR /////////////////////////////////////////////////////////////////////////////////////////////
 type Payload = {

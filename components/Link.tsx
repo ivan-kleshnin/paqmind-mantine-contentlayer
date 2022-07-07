@@ -12,6 +12,7 @@ export function Link<C = "a">({asText, children, href, ...rest} : LinkProps<C>) 
   return <NextLink href={href}>
     <Anchor
       {...rest}
+      href={href}
       sx={{"&:hover": {textDecoration: "underline"}} as any}
       variant={asText ? "text" : undefined}
     >

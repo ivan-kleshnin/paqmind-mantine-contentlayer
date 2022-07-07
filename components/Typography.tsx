@@ -54,8 +54,8 @@ const useStyles = createStyles((theme) => {
 
       "& img": {
         maxWidth: "100%",
-        marginTop: theme.spacing.lg,
-        marginBottom: theme.spacing.lg,
+        // marginTop: theme.spacing.lg,
+        // marginBottom: theme.spacing.lg,
       },
 
       "& p": {
@@ -99,15 +99,15 @@ const useStyles = createStyles((theme) => {
 
       "& code": {
         lineHeight: theme.lineHeight,
-        padding: `1px ${theme.spacing.xs}px`,
+        padding: `4px ${theme.spacing.xs}px`,
         borderRadius: theme.radius.sm,
         color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
         backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.colors.gray[0],
         fontFamily: theme.fontFamilyMonospace,
         fontSize: theme.fontSizes.sm,
-        border: `1px solid ${
-          theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.colors.gray[3]
-        }`,
+        // border: `1px solid ${
+        //   theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.colors.gray[3]
+        // }`,
       },
 
       "& ul, & ol": {

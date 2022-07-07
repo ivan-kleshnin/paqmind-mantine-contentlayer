@@ -1,12 +1,13 @@
+import {Group, Stack, Title} from "@mantine/core"
 import {Page, Post, allPages, allPosts} from "contentlayer/generated"
 import {ParsedUrlQuery} from "querystring"
 import {GetStaticProps} from "next"
 import Head from "next/head"
-import Link from "next/link"
 import {useMDXComponent} from "next-contentlayer/hooks"
-import {Button} from "components"
+import {HorizontalCard, Typography} from "components"
 import * as U from "lib/utils"
 
+// BlogPage
 type BlogPageProps = {
   blog: Page
   posts: Post[]
@@ -20,38 +21,25 @@ export default function BlogPage({blog, posts}: BlogPageProps) : JSX.Element {
       <title>{blog.title}</title>
     </Head>
     <main>
-      <h1>{blog.title}</h1>
+      <Typography>
+        <h1>{blog.title}</h1>
+        <MDXContent components={{Group}}/>
+      </Typography>
 
-      <div>
-        <MDXContent components={{Button}}/>
-      </div>
-
-      <h2>Posts</h2>
-      {posts.map((post, i) => (
-        <PostCard key={i} post={post}/>
-      ))}
+      <Title order={2} mt={32} mb={24}>All Posts</Title>
+      <Stack spacing={24}>
+        {posts.map((post, i) => (
+          <HorizontalCard
+            key={i}
+            title={post.title}
+            intro={post.intro.html}
+            postedAt={post.createdAt}
+            tags={post.tags}
+            url={post.url}
+          />
+        ))}
+      </Stack>
     </main>
-  </>
-}
-
-type PostCardProps = {
-  post: Post
-}
-
-function PostCard({post} : PostCardProps) : JSX.Element {
-  return <>
-    <div>
-      <h2>
-        <Link href={post.url}>
-          <a>{post.title}</a>
-        </Link>
-      </h2>
-      <div>
-        <time dateTime={post.createdAt}>
-          {new Date(post.createdAt).toLocaleDateString()}
-        </time>
-      </div>
-    </div>
   </>
 }
 
@@ -79,4 +67,3 @@ export const getStaticProps: GetStaticProps<Payload, Params> = async () => {
     }
   }
 }
-
