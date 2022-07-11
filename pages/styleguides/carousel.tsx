@@ -33,13 +33,13 @@ export const EmblaCarousel = () => {
 
   return <>
     <Group position="apart">
-      <Title order={2} mb={8}>Recent Testimonials</Title>
+      <Title order={2} mb=".5rem">Recent Testimonials</Title>
       <Group>
         <IconContainer hint="left" onClick={scrollPrev}>
-          <ChevronLeft strokeWidth={1.5} size={24}/>
+          <ChevronLeft strokeWidth={1.5} size="1.5rem"/>
         </IconContainer>
         <IconContainer hint="right" onClick={scrollNext}>
-          <ChevronRight strokeWidth={1.5} size={24}/>
+          <ChevronRight strokeWidth={1.5} size="1.5rem"/>
         </IconContainer>
       </Group>
     </Group>

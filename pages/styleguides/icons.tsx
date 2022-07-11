@@ -6,10 +6,10 @@ export default function IconsPage() {
     <Container>
       <Group>
         <IconContainer hint="left">
-          <ChevronLeft strokeWidth={1.5} size={32}/>
+          <ChevronLeft strokeWidth={1.5} size="2rem"/>
         </IconContainer>
         <IconContainer hint="right">
-          <ChevronRight strokeWidth={1.5} size={32}/>
+          <ChevronRight strokeWidth={1.5} size="2rem"/>
         </IconContainer>
       </Group>
     </Container>

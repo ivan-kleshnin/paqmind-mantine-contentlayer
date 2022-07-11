@@ -32,10 +32,10 @@ export function Carousel({items}: CarouselProps): JSX.Element {
   return <Box sx={{position: "relative"}}>
     <Group position="right" sx={{position: "absolute", top: 24, right: 24, zIndex: 1}}>
       <IconContainer hint="left" onClick={scrollPrev}>
-        <ChevronLeft strokeWidth={1.5} size={24}/>
+        <ChevronLeft strokeWidth={1.5} size="1.5rem"/>
       </IconContainer>
       <IconContainer hint="right" onClick={scrollNext}>
-        <ChevronRight strokeWidth={1.5} size={24}/>
+        <ChevronRight strokeWidth={1.5} size="1.5rem"/>
       </IconContainer>
     </Group>
     <Box sx={{overflow: "hidden"}}>
@@ -146,13 +146,13 @@ function RepositionSVG({children, hint, offset = 1}: RepositionSVGProps) {
 //
 //   return <>
 //     <Group position="apart">
-//       <Title order={2} mb={8}>Recent Testimonials</Title>
+//       <Title order={2} mb=".5rem">Recent Testimonials</Title>
 //       <Group>
 //         <IconContainer hint="left" onClick={scrollPrev}>
-//           <ChevronLeft strokeWidth={1.5} size={24}/>
+//           <ChevronLeft strokeWidth={1.5} size="1.5rem"/>
 //         </IconContainer>
 //         <IconContainer hint="right" onClick={scrollNext}>
-//           <ChevronRight strokeWidth={1.5} size={24}/>
+//           <ChevronRight strokeWidth={1.5} size="1.5rem"/>
 //         </IconContainer>
 //       </Group>
 //     </Group>

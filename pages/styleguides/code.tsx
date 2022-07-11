@@ -4,7 +4,7 @@ import * as React from "react"
 import {Typography} from "components"
 
 export default function TextPage() {
-  return <Box m={32}>
+  return <Box m="2rem">
     <Container>
       <Title order={2}>Standalone components</Title>
       <Text>p test <Code>console.log("test")</Code> continues</Text>

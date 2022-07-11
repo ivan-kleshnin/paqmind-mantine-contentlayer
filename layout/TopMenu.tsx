@@ -39,11 +39,11 @@ export function TopMenu({opened, toggle, size}: TopMenuProps): JSX.Element {
               </Group>
             </MediaQuery>
           </Group>
-          <Group spacing={8} sx={{height: "100%"}}>
-            <span>Sign In</span>
-            <span>/</span>
-            <span>Sign Up</span>
-            <MediaQuery largerThan={breakpoint} styles={{display: "none"}}>
+          <Group spacing=".5rem" sx={{height: "100%"}}>
+            <Text size={itemSize}>
+              Sign In / Sign Up
+            </Text>
+            <MediaQuery largerThan="sm" styles={{display: "none"}}>
               <BurgerMenu opened={opened} onClick={toggle}/>
             </MediaQuery>
           </Group>
