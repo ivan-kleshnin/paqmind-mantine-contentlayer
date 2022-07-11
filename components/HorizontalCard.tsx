@@ -39,7 +39,7 @@ export function HorizontalCard({postedAt, url, title, intro, tags}: HorizontalCa
         <div dangerouslySetInnerHTML={{__html: intro}}/>
       </Typography>
       {(tags && Boolean(tags.length)) &&
-        <Group mb={20} mt={-8}>
+        <Group mb="1.5rem">
           {
             tags.map((tag, i) =>
               <Link key={i} href="#">

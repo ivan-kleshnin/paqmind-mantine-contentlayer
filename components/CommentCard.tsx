@@ -38,7 +38,7 @@ export function CommentCard({postedAt, body, author}: CommentCardProps) {
           <Text color="dimmed">
             Posted: {postedAt}
           </Text>
-          <TypographyStylesProvider mt={8}>
+          <TypographyStylesProvider mt=".5rem">
             <Box
               sx={{
                 "& > p": {
