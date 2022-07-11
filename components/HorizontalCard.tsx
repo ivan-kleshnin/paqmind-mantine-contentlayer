@@ -1,4 +1,4 @@
-import {Group, Paper, Text, Title, useMantineTheme} from "@mantine/core"
+import {Code, Group, Paper, Text, Title} from "@mantine/core"
 import React from "react"
 import {Link, Typography} from "components"
 
@@ -11,28 +11,27 @@ interface HorizontalCardProps {
 }
 
 export function HorizontalCard({postedAt, url, title, intro, tags}: HorizontalCardProps) {
-  const theme = useMantineTheme()
-
   return <>
     <Paper
       px="1.5rem"
       sx={{
-        position: "relative",
-        "&::before": {
-          content: "''",
-          position: "absolute",
-          top: 0,
-          bottom: 0,
-          left: 0,
-          width: 4,
-          backgroundImage: theme.fn.linearGradient(0, theme.colors.blue[6], theme.colors.green[6]),
-        },
+        // position: "relative",
+        // "&::before": {
+        //   content: "''",
+        //   position: "absolute",
+        //   top: 0,
+        //   bottom: 0,
+        //   left: 0,
+        //   width: 4,
+        //   backgroundImage: theme.fn.linearGradient(0, "#eee", "#eee"),
+        // },
       }}
     >
-      <Title order={3} mt={16}>
-        {url ? <Link asText href={url}>{title}</Link> : title}
-      </Title>
-      <Text color="dimmed" mb={-8}>
+      {url
+        ? <Link asText href={url}><Title order={3} mt="1.25rem">{title}</Title></Link>
+        : <Title order={3} mt="1rem">{title}</Title>
+      }
+      <Text color="dimmed" mb="-.5rem">
         Posted: {new Date(postedAt).toLocaleDateString()}
       </Text>
       <Typography>
@@ -42,8 +41,8 @@ export function HorizontalCard({postedAt, url, title, intro, tags}: HorizontalCa
         <Group mb="1.5rem">
           {
             tags.map((tag, i) =>
-              <Link key={i} href="#">
-                <strong><code>#{tag.toLowerCase()}</code></strong>
+              <Link key={i} href="#" asText>
+                <strong><Code>#{tag.toLowerCase()}</Code></strong>
               </Link>
             )
           }

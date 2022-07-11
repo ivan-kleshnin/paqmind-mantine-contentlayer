@@ -1,9 +1,9 @@
 import {
-  Avatar, Box, Stack, Paper, Text, Title, TypographyStylesProvider,
+  Avatar, Box, Divider, Paper, Text, Title, TypographyStylesProvider,
   /* useMantineTheme*/
 } from "@mantine/core"
 import React from "react"
-import {Link} from "components"
+import {Link, Stack} from "components"
 
 type CommentCardProps = {
   postedAt: string
@@ -16,12 +16,12 @@ type CommentCardProps = {
 
 export function CommentCard({postedAt, body, author}: CommentCardProps) {
   // const theme = useMantineTheme()
+  // withBorder
 
   return <>
     <Paper
-      withBorder
       sx={{
-        padding: "20px 24px 20px 24px",
+        padding: "1.5rem",
       }}
     >
       <Stack
@@ -34,9 +34,8 @@ export function CommentCard({postedAt, body, author}: CommentCardProps) {
         <Avatar size={64} src={author.image} alt={author.name} radius="xl"/>
         <div>
           <Title order={3}>{author.name}</Title>
-          <Text>Fullstack Developer. <Link href="#">Ivan Kleshnin</Link> was a mentor.</Text>
           <Text color="dimmed">
-            Posted: {postedAt}
+            Fullstack Developer. Posted: {postedAt}
           </Text>
           <TypographyStylesProvider mt=".5rem">
             <Box
@@ -51,6 +50,12 @@ export function CommentCard({postedAt, body, author}: CommentCardProps) {
               }}
               dangerouslySetInnerHTML={{__html: body}}
             />
+            <Divider my="1rem" variant="dashed"/>
+            <Text size="sm">
+              The student finished the <Link href="#">Fullstack Development</Link> course.
+              {" "}
+              Was mentored by <Link href="#">Ivan Kleshnin</Link>.
+            </Text>
           </TypographyStylesProvider>
         </div>
       </Stack>
