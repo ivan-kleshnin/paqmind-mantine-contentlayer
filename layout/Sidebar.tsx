@@ -1,29 +1,33 @@
-import {Container, Divider, Navbar, Stack, useMantineTheme} from "@mantine/core"
+import {Container, Divider, Navbar, useMantineTheme} from "@mantine/core"
+// import {useWindowScroll} from "@mantine/hooks"
 import * as React from "react"
-import {Link} from "components"
+import {Link, Stack} from "components"
 
 export type NavbarProps = {
   opened: boolean
-  size: "sm" | "md" | "lg"
+  size: "sm" | "md"
 }
 
 export function Sidebar({opened, size}: NavbarProps) : JSX.Element {
+  // Hide Sidebar at the point where Burger menu disappears
   const breakpoint = (
-    size == "lg" ? "md" :
     size == "md" ? "lg" :
     size == "sm" ? "xl" : "lg"
   )
 
   const theme = useMantineTheme()
+  const [scroll] = [{y: 0}] // useWindowScroll() -- SSR incompatible
+  const headerHeight = (scroll.y > 16 * 8) ? "3.5rem" : "5rem"
 
   return <>
     <Navbar
-      mt="5rem"
+      mt={headerHeight}
       sx={{
         display: opened ? undefined : "none",
         [theme.fn.largerThan(breakpoint)]: {
           display: "none",
         },
+        position: "fixed",
         minHeight: "calc(100vh - 5rem)",
       }}
     >
