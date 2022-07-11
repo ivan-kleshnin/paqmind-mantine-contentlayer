@@ -1,7 +1,7 @@
 import * as React from "react"
 
 export * from "./Button"
-export * from "./Carousel"
+export * from "./CommentCarousel"
 export * from "./CommentCard"
 export * from "./HorizontalCard"
 export * from "./Link"

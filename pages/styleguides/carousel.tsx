@@ -51,24 +51,30 @@ export const EmblaCarousel = () => {
             flexBasis: "100%",
           }}>
             <CommentCard
-              postedAt="2016-02-01"
+              createdAt="2016-02-01"
               body={body}
               author={{
-              name: "Jacob Warnhalter",
-              image: "https://images.unsplash.com/photo-1624298357597-fd92dfbec01d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=80"
-            }}/>
+                fullname: "Jacob Warnhalter",
+                title: "Developer",
+                contacts: {},
+                avatarUrl: "https://images.unsplash.com/photo-1624298357597-fd92dfbec01d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=80"
+              }}
+            />
           </Box>
           <Box sx={{
             flexShrink: 0,
             flexBasis: "100%",
           }}>
             <CommentCard
-              postedAt="2017-03-11"
+              createdAt="2017-03-11"
               body={body}
               author={{
-              name: "Jessica Rabbit",
-              image: "https://images.unsplash.com/photo-1624298357597-fd92dfbec01d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=80"
-            }}/>
+                fullname: "Jessica Rabbit",
+                title: "Developer",
+                contacts: {},
+                avatarUrl: "https://images.unsplash.com/photo-1624298357597-fd92dfbec01d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=80"
+              }}
+            />
           </Box>
           <Box sx={{
             flexShrink: 0,

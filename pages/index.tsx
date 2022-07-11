@@ -1,31 +1,52 @@
 import {Box, Container, Text, Title} from "@mantine/core"
-import {Page, Post, Testimonial, allPages, allPosts, allTestimonials} from "contentlayer/generated"
+import {
+  type Account, type Page, type Post, type Testimonial,
+  allPages, allPosts, allTestimonials, allAccounts
+} from "contentlayer/generated"
 import {ParsedUrlQuery} from "querystring"
 import {GetStaticProps} from "next"
 import Head from "next/head"
 import {useMDXComponent} from "next-contentlayer/hooks"
 import LazyLoad from "react-lazyload"
-import {Carousel, Group, HorizontalCard, Link, Stack, Typography} from "components"
+import {CommentCarousel, Group, HorizontalCard, Link, Stack, Typography} from "components"
 import * as U from "lib/utils"
 
 // HomePage
 type HomePageProps = Payload // & some Next stuff
 
-export default function HomePage({home, recentPosts/*, recentTestimonials*/}: HomePageProps) : JSX.Element {
+export default function HomePage({accounts, home, recentPosts, recentTestimonials}: HomePageProps) : JSX.Element {
   const MDXContent = useMDXComponent(home.body.code)
 
   return <>
     <Head>
       <title>{home.title}</title>
     </Head>
-    <Container size={HomePage.layoutSize} mt="2rem" mb="2.5rem">
-      <Title>{home.title}</Title>
-      <Typography>
-        <MDXContent components={{Group}}/>
-      </Typography>
-    </Container>
+    <main>
+      <Container size={HomePage.layoutSize} mt="2rem" mb="2.5rem">
+        <Title>{home.title}</Title>
+        <Typography>
+          <MDXContent components={{Group}}/>
+        </Typography>
+      </Container>
 
-    <Box sx={{backgroundColor: "#eee"}} pt="2rem" pb="2.5rem">
+      <RecentPosts accounts={accounts} recentPosts={recentPosts}/>
+      <StudentsMap/>
+      <RecentTestimonials accounts={accounts} recentTestimonials={recentTestimonials}/>
+    </main>
+  </>
+}
+
+HomePage.layoutSize = "md" as const
+
+// RecentPosts
+type RecentPostsProps = {
+  accounts: Account[]
+  recentPosts: Post[]
+}
+
+function RecentPosts({recentPosts}: RecentPostsProps): JSX.Element {
+  return <>
+    <Box className="grayPaddingBox" sx={{backgroundColor: "#eee"}} pt="2rem" pb="2.5rem">
       <Container size={HomePage.layoutSize}>
         <Title order={2} mb="1rem">Recent Posts</Title>
         <Stack spacing="1rem">
@@ -40,56 +61,65 @@ export default function HomePage({home, recentPosts/*, recentTestimonials*/}: Ho
             />
           )}
         </Stack>
-        <Box component="p" mt="1.5rem">
-          &#128073; Read more posts on our <Link href="#">Blog</Link> page.
+        <Box component="p" mt="1.25rem">
+          &#128073; Check more on the <Link href="/blog">Blog page</Link>.
         </Box>
-      </Container>
-    </Box>
-
-    <Box pt="2rem" pb="2.5rem">
-      <Container size={HomePage.layoutSize}>
-        <Title mb="1rem">Zzz</Title>
-        <LazyLoad>
-          <img src="/index/map-of-students.webp" width="100%"/>
-        </LazyLoad>
-        <Text component="p" mt="1rem">
-          The map will be update to English soon ;)
-        </Text>
-      </Container>
-    </Box>
-
-    <Box sx={{backgroundColor: "#eee"}} pt="2rem" pb="2.5rem">
-      <Container size={HomePage.layoutSize}>
-        <Title order={2} mb="1rem">Recent Testimonials</Title>
-        <Carousel
-          items={[
-            {
-              body: `<p>Extend default theme with any amount of additional colors, replace shadows, radius, spacing, fonts and many other properties to match your design requirements. Mantine theme is just an object, you can subscribe to it in any part of application via context and use it to build your own components.</p>`,
-              createdAt: new Date().toLocaleDateString(),
-              author: {
-                name: "John Doe",
-                image: "https://images.unsplash.com/photo-1624298357597-fd92dfbec01d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=80"
-              },
-            },
-            {
-              body: `<p>Replace shadows, radius, spacing, fonts and many other properties to match your design requirements. Mantine theme is just an object, you can subscribe to it in any part of application via context and use it to build your own components.</p>`,
-              createdAt: new Date().toLocaleDateString(),
-              author: {
-                name: "Jane Doe",
-                image: "https://images.unsplash.com/photo-1624298357597-fd92dfbec01d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=80"
-              },
-            }
-          ]}
-        />
       </Container>
     </Box>
   </>
 }
 
-HomePage.layoutSize = "md" as const
+// RecentTestimonials
+type RecentTestimonialsProps = {
+  accounts: Account[]
+  recentTestimonials: Testimonial[]
+}
+
+function RecentTestimonials({accounts, recentTestimonials}: RecentTestimonialsProps): JSX.Element {
+  const enrichedTestimonials = recentTestimonials.flatMap(testimonial => {
+    const author = accounts.find(account => account.id == testimonial.fromAccountId)
+    if (!author) return []
+    return [{
+      ...testimonial,
+      body: testimonial.body.html,
+      createdAt: testimonial.createdAt,
+      author,
+    }]
+  })
+
+  return <>
+    <Box className="grayPaddingBox" sx={{backgroundColor: "#eee"}} pt="2rem" pb="2.5rem">
+      <Container size={HomePage.layoutSize}>
+        <Title order={2} mb="1rem">Recent Testimonials</Title>
+        <CommentCarousel testimonials={enrichedTestimonials}/>
+        <Box component="p" mt="1.25rem">
+          &#128073; Check more on the <Link href="/testimonials">Testimonials page</Link>.
+        </Box>
+      </Container>
+    </Box>
+  </>
+}
+
+// StudentsMap
+function StudentsMap(): JSX.Element {
+  return <>
+    <Box className="whitePaddingBox" pt="2rem" pb="2.5rem">
+      <Container size={HomePage.layoutSize}>
+        <Title mb="1rem">The map of our Students</Title>
+        <LazyLoad>
+          <img src="/index/map-of-students.webp" width="100%"/>
+        </LazyLoad>
+        <Text component="p" mt="1rem">
+          The map will be updated to English soon &#128521;
+        </Text>
+      </Container>
+    </Box>
+  </>
+}
 
 // SSR /////////////////////////////////////////////////////////////////////////////////////////////
 type Payload = {
+  accounts: Account[]
   home: Page
   recentPosts: Post[]
   recentTestimonials: Testimonial[]
@@ -105,12 +135,16 @@ export const getStaticProps: GetStaticProps<Payload, Params> = async () => {
     throw new Error("...")
   }
 
+  const accounts = allAccounts
   const recentPosts = [...allPosts].sort(U.byCreatedAtDesc).slice(0, 3)
   const recentTestimonials = [...allTestimonials].sort(U.byCreatedAtDesc).slice(0, 3)
 
   return {
     props: {
-      home, recentPosts, recentTestimonials,
+      accounts,
+      home,
+      recentPosts,
+      recentTestimonials,
     }
   }
 }

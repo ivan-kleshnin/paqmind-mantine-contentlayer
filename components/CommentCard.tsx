@@ -1,20 +1,19 @@
 import {
-  Avatar, Box, Divider, Paper, Text, Title, TypographyStylesProvider,
+  Avatar, Box, Divider, Paper, Text, Title,
   /* useMantineTheme*/
 } from "@mantine/core"
+import {/*Mail,*/ BrandGithub /*BrandFacebook, BrandLinkedin, BrandSkype, BrandTelegram, BrandTwitter, BrandYoutube*/} from "tabler-icons-react"
+import {Account} from "contentlayer/generated"
 import React from "react"
-import {Link, Stack} from "components"
+import {/*Group,*/ Link, Stack, Typography} from "components"
 
-type CommentCardProps = {
-  postedAt: string
+export type CommentCardProps = {
   body: string
-  author: {
-    name: string
-    image: string
-  }
+  createdAt: string
+  author: Pick<Account, "fullname" | "title" | "avatarUrl" | "contacts">
 }
 
-export function CommentCard({postedAt, body, author}: CommentCardProps) {
+export function CommentCard({createdAt, body, author}: CommentCardProps) {
   // const theme = useMantineTheme()
   // withBorder
 
@@ -31,13 +30,51 @@ export function CommentCard({postedAt, body, author}: CommentCardProps) {
           },
         }}
       >
-        <Avatar size={64} src={author.image} alt={author.name} radius="xl"/>
         <div>
-          <Title order={3}>{author.name}</Title>
+          <Box
+            style={{display: "flex", gap: "1rem", alignItems: "flex-start"}}
+            sx={{
+              "@media (min-width: 640px)": {
+                flexDirection: "column",
+              },
+            }}
+          >
+            {author.avatarUrl
+              ? <Avatar size={64} src={author.avatarUrl} alt={author.fullname} radius="xl"/>
+              : null
+            }
+            {/*<Stack spacing="0.75rem">
+              <Group spacing="0.75rem">
+                <Mail size="1rem" color="#59F"/>
+                <BrandGithub size="1rem" color="#59F"/>
+                <BrandFacebook size="1rem" color="#59F"/>
+                <BrandLinkedin size="1rem" color="#59F"/>
+              </Group>
+              <Group spacing="0.75rem">
+                <BrandSkype size="1rem" color="#ccc"/>
+                <BrandTelegram size="1rem" color="#59F"/>
+                <BrandTwitter size="1rem" color="#ccc"/>
+                <BrandYoutube size="1rem" color="#59F"/>
+              </Group>
+            </Stack>*/}
+          </Box>
+        </div>
+        <div>
+          <Title order={3}>
+            {author.fullname}
+            <Text component="span" ml="0.5rem">
+              {author.contacts.github
+                ? <Link href={`https://github.com/${author.contacts.github}`}>
+                    <BrandGithub size="1rem"/>
+                  </Link>
+                : null
+              }
+            </Text>
+          </Title>
           <Text color="dimmed">
-            Fullstack Developer. Posted: {postedAt}
+            {author.title}. Posted: {new Date(createdAt).toLocaleDateString()}
           </Text>
-          <TypographyStylesProvider mt=".5rem">
+          <Typography mt=".5rem">
             <Box
               sx={{
                 "& > p": {
@@ -52,11 +89,11 @@ export function CommentCard({postedAt, body, author}: CommentCardProps) {
             />
             <Divider my="1rem" variant="dashed"/>
             <Text size="sm">
-              The student finished the <Link href="#">Fullstack Development</Link> course.
-              {" "}
+              {/*The student finished the <Link href="#">React Fundamentals Development</Link> course.*/}
+              {/*{" "}*/}
               Was mentored by <Link href="#">Ivan Kleshnin</Link>.
             </Text>
-          </TypographyStylesProvider>
+          </Typography>
         </div>
       </Stack>
     </Paper>

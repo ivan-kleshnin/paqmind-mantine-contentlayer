@@ -3,22 +3,14 @@ import {CommentCard} from "components"
 import useEmblaCarousel from "embla-carousel-react"
 import * as React from "react"
 import {ChevronRight, ChevronLeft} from "tabler-icons-react"
+import {type CommentCardProps} from "./CommentCard"
 
-// Carousel
-type Item = {
-  body: string
-  createdAt: string
-  author: {
-    name: string,
-    image: string
-  }
+// CommentCarousel
+export type CommentCarouselProps = {
+  testimonials: CommentCardProps[]
 }
 
-export type CarouselProps = {
-  items: Item[]
-}
-
-export function Carousel({items}: CarouselProps): JSX.Element {
+export function CommentCarousel({testimonials}: CommentCarouselProps): JSX.Element {
    const [emblaRef, emblaApi] = useEmblaCarousel()
 
   const scrollPrev = React.useCallback(() => {
@@ -29,7 +21,7 @@ export function Carousel({items}: CarouselProps): JSX.Element {
     if (emblaApi) emblaApi.scrollNext()
   }, [emblaApi])
 
-  return <Box sx={{position: "relative"}}>
+  return <Box className="commentCarousel" sx={{position: "relative"}}>
     <Group position="right" sx={{position: "absolute", top: 24, right: 24, zIndex: 1}}>
       <IconContainer hint="left" onClick={scrollPrev}>
         <ChevronLeft strokeWidth={1.5} size="1.5rem"/>
@@ -40,20 +32,17 @@ export function Carousel({items}: CarouselProps): JSX.Element {
     </Group>
     <Box sx={{overflow: "hidden"}}>
       <Box className="viewport" ref={emblaRef}>
-        <Box className="container" sx={{display: "flex"}}>
-          {items.map((item, i) => {
+        <Box className="container" sx={{display: "flex", alignItems: "stretch"}}>
+          {testimonials.map((testimonial, i) => {
             return <Box
               key={i}
               sx={{
                 flexShrink: 0,
                 flexBasis: "100%",
+                height: "100%",
               }}
             >
-              <CommentCard
-                postedAt={item.createdAt}
-                body={item.body}
-                author={item.author}
-              />
+              <CommentCard {...testimonial}/>
             </Box>
           })}
         </Box>

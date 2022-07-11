@@ -1,6 +1,6 @@
-import {Box, Container, Footer, Grid, Text, Title} from "@mantine/core"
+import {Box, Container, Footer, Grid, Title} from "@mantine/core"
 import * as React from "react"
-import {BrandYoutube, BrandPatreon, BrandTelegram, BrandLinkedin} from "tabler-icons-react"
+import {BrandYoutube, BrandTelegram, BrandLinkedin} from "tabler-icons-react"
 import {Link} from "components"
 
 // AppFooter
@@ -14,23 +14,23 @@ export function AppFooter(/*{size}: AppFooterProps*/): JSX.Element {
       <Container>
        <Grid justify="space-between">
           <Grid.Col span={4}>
-            <Text weight={600} sx={{lineHeight: (1.45 * 18) + "px"}}>
+            <Title order={4}>
               &copy; Paqmind Team, 2022
-            </Text>
+            </Title>
             <Box component="ul" mt="1.25rem" sx={{listStyleType: "none", "& li": {marginTop: 8}}}>
-              <li>Terms of use</li>
-              <li>Privacy policy</li>
-              <li>Offer</li>
-              <li>Thank you</li>
+              {/*<li>Terms of use</li>*/}
+              {/*<li>Privacy policy</li>*/}
+              {/*<li>Offer</li>*/}
+              {/*<li>Thank you</li>*/}
             </Box>
           </Grid.Col>
           <Grid.Col span={3}>
             <Title order={4}>LEARNING</Title>
             <Box component="ul" mt="1.25rem" sx={{listStyleType: "none", "& li": {marginTop: 8}}}>
-              <li>Courses</li>
-              <li>Mentors</li>
-              <li>Tutorials (en)</li>
-              <li>Useful Links (en)</li>
+              <li>WIP</li>
+              {/*<li>Mentors</li>*/}
+              {/*<li>Tutorials</li>*/}
+              <li>Useful Links</li>
             </Box>
           </Grid.Col>
           <Grid.Col span={3}>
@@ -39,16 +39,16 @@ export function AppFooter(/*{size}: AppFooterProps*/): JSX.Element {
               <li><Link href="/about" asText>About</Link></li>
               <li><Link href="/blog" asText>Blog</Link></li>
               <li>Testimonials</li>
-              <li>Feedback</li>
+              {/*<li>Feedback</li>*/}
             </Box>
           </Grid.Col>
          <Grid.Col span={2}>
             <Title order={4} sx={{textAlign: "end"}}>COMMUNITY</Title>
             <Box component="ul" mt="1.25rem" sx={{listStyleType: "none", "& li": {marginTop: 8}}}>
-              <li style={{textAlign: "end"}}><BrandYoutube/></li>
-              <li style={{textAlign: "end"}}><BrandPatreon/></li>
-              <li style={{textAlign: "end"}}><BrandTelegram/></li>
-              <li style={{textAlign: "end"}}><BrandLinkedin/></li>
+              <li style={{display: "flex", justifyContent: "right"}}><BrandYoutube style={{display: "block"}}/></li>
+              {/*<li style={{textAlign: "end"}}><BrandPatreon style={{display: "block"}}/></li>*/}
+              <li style={{display: "flex", justifyContent: "right"}}><BrandTelegram style={{display: "block"}}/></li>
+              <li style={{display: "flex", justifyContent: "right"}}><BrandLinkedin style={{display: "block"}}/></li>
             </Box>
           </Grid.Col>
         </Grid>
@@ -56,3 +56,4 @@ export function AppFooter(/*{size}: AppFooterProps*/): JSX.Element {
     </Footer>
   </>
 }
+

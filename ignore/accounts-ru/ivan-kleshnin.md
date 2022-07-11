@@ -2,8 +2,8 @@
 id: 96a0c95d-58d3-4a25-b52a-b006d3fc9483
 username: ivan-kleshnin
 role: mentor
-fullname: Ivan Kleshnin
-title: Web development and programming mentor
+fullname: Иван Клешнин
+title: Ментор по веб-разработке и программированию	
 contacts: 
   email: ivan@paqmind.com
   skype: ivan_kleshnin
@@ -12,7 +12,7 @@ contacts:
   youtube: c/IvanKleshnin
   linkedin: ivan-kleshnin
 stats: 
-  - ["3", "years of mentorship"]
+  - ["3", "года работы ментором"]
   - ["250+", "авторских упражнений<br/>на Paqmind.com"]
   - ["45", "образовательных статей<br/>и туториалов"]
   - ["60+", "трудоустроенных<br/>студентов"]
@@ -29,7 +29,7 @@ skills:
 programs:
   - logo: chat  
     price: €25 / час
-    title: Individual consultment
+    title: Индивидуальная консультация
     formUrl: https://forms.gle/iyvX6PwFKMYZjboL8
     description: | 
       Вопросы по обучению, технологиям, карьере, фрилансу, удалённой работе. 
@@ -37,20 +37,20 @@ programs:
 birthDate: 1985-01-29T00:00:00.000Z
 education:
   - years: 2002 — 2007
-    url: <a href="https://donntu.edu.ua">Donetsk National Technical University</a>
-    title: Computer Systems and Networks, Magister 
+    url: <a href="https://donntu.edu.ua">Донецкий Национальный Технический Университет</a>
+    title: Компьютерные Системы и Сети, Магистр
 interests:
-  - Software architecture
-  - Functional programming
-  - Static types
+  - Архитектура ПО
+  - Функциональное Программирование
+  - Статическая Типизация
 languages:
-  - [Russian, 5/5] 
-  - [Ukrainian, 5/5]
-  - [English, 4/5]
-  - [Polish, 3/5]
-  - [Slovak, 2/5]
-  - [German, 1/5] 
-  - [Serbian, 1/5] 
+  - [Русский, 5/5] 
+  - [Украинский, 5/5]
+  - [Английский, 4/5]
+  - [Польский, 3/5]
+  - [Словацкий, 2/5]
+  - [Немецкий, 1/5] 
+  - [Сербский, 1/5] 
 studentsProjects: 
   - {"url": "https://vkxedeen.github.io/fatsbase", "title": "База пищевых масел", "imageUrl": "/content/mentors/assets/fatsbase.png", "authorUrl": "https://vkxedeen.github.io/", "authorName": "Виктор Кутузов", "background": "lightest-blue0", "description": "Интерактивная таблица для сравнения жирового профиля пищевых масел."}
   - {"url": "https://github.com/WildDima/node-http-clients-comparison", "title": "HTTP клиенты", "imageUrl": "/content/mentors/assets/http-clients.png", "authorUrl": "https://github.com/WildDima", "authorName": "Дмитрий Топорнин", "background": "lightest-brown1", "description": "Сравнительная таблица HTTP клиентов в JS экосистеме"} 
@@ -92,9 +92,9 @@ bonus: 0
 Меня приглашали в AirBnb, Barclais, Lego, Uber, но я старый и упрямый приверженец      
 фриланса, удалённой работы и малого бизнеса :) Иду своей дорогой...      
   
-### Achievements
+### Некоторые достижения      
   
-- [JavaScript TOP-10 in Warsaw](http://git-awards.com/users/search?login=ivan-kleshnin) (GitHub Awards)      
+- [JavaScript TOP-10 по Варшаве](http://git-awards.com/users/search?login=ivan-kleshnin) (GitHub Awards)      
 - Консультировал удалённые команды в PowerToFly, Epic Games, Toptal      
 - Выполнял технические ревью для Packt Publishing      
 - Автор 250+ упражнений по программированию в Paqmind.com      
@@ -106,7 +106,7 @@ bonus: 0
 - Опубликовал несколько библиотек с открытым кодом на JavaScript и Python      
 - Автор нескольких фреймворков и CMS'      
   
-## Learning      
+## Обучение      
   
 В роли ментора, я научу вас инженерному мышлению: правильно расставлять      
 приоритеты, точно формулировать вопросы, находить и сравнивать альтернативные      
@@ -119,14 +119,14 @@ bonus: 0
 помогать студентам с трудоустройством. Многие из моих бывших студентов сейчас      
 работают в крупных компаниях на хороших должностях:      
   
-<Group spacing="1.5rem">      
+<div class="company-logos as-box">      
   <div class="item"><img src="/content/assets/company-logos/yandex.png"/></div>      
   <div class="item"><img src="/content/assets/company-logos/privatbank.png"/></div>      
   <div class="item"><img src="/content/assets/company-logos/epam.png"/></div>      
   <div class="item"><img src="/content/assets/company-logos/alphabank.png"/></div>      
   <div class="item"><img src="/content/assets/company-logos/toptal.png"/></div>      
   <div class="item"><img src="/content/assets/company-logos/sberbank.png"/></div>      
-</Group>      
+</div>      
   
 Кто-то выбрал фриланс, кто-то переехал в США/Европу. Время от времени я контактирую      
 с бывшими студентами, т.к. меня искренне интересует развитие их карьеры.      

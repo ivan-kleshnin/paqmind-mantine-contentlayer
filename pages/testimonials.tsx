@@ -1,5 +1,8 @@
 import {Box, Container, Title} from "@mantine/core"
-import {Page, Testimonial, allPages, allTestimonials} from "contentlayer/generated"
+import {
+  type Account, type Page, type Testimonial,
+  allPages, allTestimonials, allAccounts
+} from "contentlayer/generated"
 import {ParsedUrlQuery} from "querystring"
 import {GetStaticProps} from "next"
 import Head from "next/head"
@@ -11,42 +14,62 @@ import * as U from "lib/utils"
 // TestimonialsPage
 type TestimonialsPageProps = Payload
 
-export default function TestimonialsPage({page, testimonials}: TestimonialsPageProps) : JSX.Element {
+export default function TestimonialsPage({accounts, page, testimonials}: TestimonialsPageProps): JSX.Element {
   const MDXContent = useMDXComponent(page.body.code)
 
   return <>
     <Head>
       <title>{page.title}</title>
     </Head>
-    <Box sx={{backgroundColor: "#eee"}} pt="2rem" pb="2.5rem">
-      <Container size={BlogPage.layoutSize}>
-        <main>
-          <Title>{page.title}</Title>
-          <Typography>
-            <MDXContent components={{Group}}/>
-          </Typography>
-
-          <Title order={2} mt="2rem" mb=".5rem">Testimonials</Title>
-          <Stack spacing="1rem">
-            {testimonials.map((testimonial, i) => (
-              <CommentCard
-                key={i}
-                postedAt="today"
-                body={testimonial.body.html}
-                author={{name: "JohnDoe", image: "https://images.unsplash.com/photo-1624298357597-fd92dfbec01d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=80"}}
-              />
-            ))}
-          </Stack>
-        </main>
+    <main>
+      <Container size={BlogPage.layoutSize} mt="2rem" mb="2.5rem">
+        <Title>{page.title}</Title>
+        <Typography>
+          <MDXContent components={{Group}}/>
+        </Typography>
       </Container>
-    </Box>
+      <TestimonialSection accounts={accounts} testimonials={testimonials}/>
+    </main>
   </>
 }
 
 TestimonialsPage.layoutSize = "md" as const
 
+// TestimonialSection
+type TestimonialSectionProps = {
+  accounts: Account[]
+  testimonials: Testimonial[]
+}
+
+function TestimonialSection({accounts, testimonials}: TestimonialSectionProps): JSX.Element {
+  const enrichedTestimonials = testimonials.flatMap(testimonial => {
+    const author = accounts.find(account => account.id == testimonial.fromAccountId)
+    if (!author) return []
+    return [{
+      ...testimonial,
+      body: testimonial.body.html,
+      createdAt: testimonial.createdAt,
+      author,
+    }]
+  })
+
+  return <>
+    <Box sx={{backgroundColor: "#eee"}} pt="2rem" pb="2.5rem">
+      <Container size={BlogPage.layoutSize}>
+        <Title order={2} mb="1rem">Mentorship Testimonials</Title>
+        <Stack spacing="1rem">
+          {enrichedTestimonials.map((testimonial, i) =>
+            <CommentCard key={i} {...testimonial}/>
+          )}
+        </Stack>
+      </Container>
+    </Box>
+  </>
+}
+
 // SSR /////////////////////////////////////////////////////////////////////////////////////////////
 type Payload = {
+  accounts: Account[]
   page: Page
   testimonials: Testimonial[]
 }
@@ -61,11 +84,14 @@ export const getStaticProps: GetStaticProps<Payload, Params> = async () => {
     throw new Error("...")
   }
 
+  const accounts = allAccounts
   const testimonials = [...allTestimonials].sort(U.byCreatedAtDesc)
 
   return {
     props: {
-      page, testimonials,
+      accounts,
+      page,
+      testimonials,
     }
   }
 }

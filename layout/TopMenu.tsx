@@ -39,9 +39,11 @@ export function TopMenu({opened, toggle}: TopMenuProps): JSX.Element {
             </MediaQuery>
           </Group>
           <Group spacing=".5rem" sx={{height: "100%"}}>
-            <Text size={itemSize}>
-              Sign In / Sign Up
-            </Text>
+            <Link href="#" asText>
+              <Text size={itemSize} onClick={() => alert("This functionality is temporarily unavailable!")}>
+                Sign In / Sign Up
+              </Text>
+            </Link>
             <MediaQuery largerThan="sm" styles={{display: "none"}}>
               <BurgerMenu opened={opened} onClick={toggle}/>
             </MediaQuery>
