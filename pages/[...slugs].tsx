@@ -1,3 +1,4 @@
+import {Container} from "@mantine/core"
 import {Prism} from "@mantine/prism"
 import {Page, allPages} from "contentlayer/generated"
 import {ParsedUrlQuery} from "querystring"
@@ -16,12 +17,14 @@ export default function AnyPage({page} : AnyPageProps) : JSX.Element {
     <Head>
       <title>{page.title}</title>
     </Head>
-    <article>
-      <Typography>
-        <h1>{page.title}</h1>
-        <MDXContent components={{Prism}}/>
-      </Typography>
-    </article>
+    <Container size={AnyPage.layoutSize} mt="2rem" mb="2.5rem">
+      <article>
+        <Typography>
+          <h1>{page.title}</h1>
+          <MDXContent components={{Prism}}/>
+        </Typography>
+      </article>
+    </Container>
   </>
 }
 
