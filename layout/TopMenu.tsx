@@ -1,25 +1,24 @@
-import {Container, Group, Header, MediaQuery, Title} from "@mantine/core"
+import {Container, Header, MediaQuery, Text, Title} from "@mantine/core"
+// import {useWindowScroll} from "@mantine/hooks"
 import * as React from "react"
-import {Link} from "components"
+import {Link, Group} from "components"
 import {BurgerMenu} from "layout/BurgerMenu"
 
 // TopMenu
 export type TopMenuProps = {
   opened: boolean
   toggle: () => void
-  size: "sm" | "md" | "lg"
 }
 
-export function TopMenu({opened, toggle, size}: TopMenuProps): JSX.Element {
-  const breakpoint = (
-    size == "lg" ? "md" :
-    size == "md" ? "lg" :
-    size == "sm" ? "xl" : "lg"
-  )
+export function TopMenu({opened, toggle}: TopMenuProps): JSX.Element {
+  const [scroll] = [{y: 0}]  // useWindowScroll() -- SSR incompatible
+  const logoOrder = (scroll.y > 16 * 8) ? 3 : 2
+  const itemSize = (scroll.y > 16 * 8) ? "md" : "lg"
+  const headerHeight = (scroll.y > 16 * 8) ? "3.5rem" : "5rem"
 
   return <>
-    <Header fixed height="5rem">
-      <Container size={size} sx={{height: "100%"}}>
+    <Header fixed height={headerHeight}>
+      <Container sx={{height: "100%"}}>
         <Group position="apart" sx={{height: "100%"}}>
           <Group spacing={0} position="left" sx={{height: "100%"}}>
             <Title mr="0.5rem" order={2}><Link href="/" asText>Q</Link></Title>
