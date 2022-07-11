@@ -1,10 +1,11 @@
-import {Box, Group, Stack, Title} from "@mantine/core"
+import {Box, Container, Text, Title} from "@mantine/core"
 import {Page, Post, Testimonial, allPages, allPosts, allTestimonials} from "contentlayer/generated"
 import {ParsedUrlQuery} from "querystring"
 import {GetStaticProps} from "next"
 import Head from "next/head"
 import {useMDXComponent} from "next-contentlayer/hooks"
-import {Carousel, HorizontalCard, Link, Typography} from "components"
+import LazyLoad from "react-lazyload"
+import {Carousel, Group, HorizontalCard, Link, Stack, Typography} from "components"
 import * as U from "lib/utils"
 
 // HomePage
@@ -17,81 +18,75 @@ export default function HomePage({home, recentPosts/*, recentTestimonials*/}: Ho
     <Head>
       <title>{home.title}</title>
     </Head>
-    <article>
+    <Container size={HomePage.layoutSize} mt="2rem" mb="2.5rem">
+      <Title>{home.title}</Title>
       <Typography>
-        <h1>{home.title}</h1>
         <MDXContent components={{Group}}/>
       </Typography>
+    </Container>
 
-      <Title order={2} mt={32} mb={24}>Recent Posts</Title>
-      <Stack spacing={24}>
-        {recentPosts.map((post, i) => (
-          <HorizontalCard
-            key={i}
-            title={post.title}
-            intro={post.intro.html}
-            postedAt={post.createdAt}
-            tags={post.tags}
-            url={post.url}
-          />
-        ))}
-      </Stack>
-      <Box component="p" mt={20}>
-        &#128073; Read more posts on our <Link href="#">Blog</Link> page.
-      </Box>
+    <Box sx={{backgroundColor: "#eee"}} pt="2rem" pb="2.5rem">
+      <Container size={HomePage.layoutSize}>
+        <Title order={2} mb="1rem">Recent Posts</Title>
+        <Stack spacing="1rem">
+          {recentPosts.flatMap((post, i) =>
+            <HorizontalCard
+              key={i + "-2"}
+              title={post.title}
+              intro={post.intro.html}
+              postedAt={post.createdAt}
+              tags={post.tags}
+              url={post.url}
+            />
+          )}
+        </Stack>
+        <Box component="p" mt="1.5rem">
+          &#128073; Read more posts on our <Link href="#">Blog</Link> page.
+        </Box>
+      </Container>
+    </Box>
 
-      <Title order={2} mt={32} mb={24}>Recent Testimonials</Title>
+    <Box pt="2rem" pb="2.5rem">
+      <Container size={HomePage.layoutSize}>
+        <Title mb="1rem">Zzz</Title>
+        <LazyLoad>
+          <img src="/index/map-of-students.webp" width="100%"/>
+        </LazyLoad>
+        <Text component="p" mt="1rem">
+          The map will be update to English soon ;)
+        </Text>
+      </Container>
+    </Box>
 
-      {/*<h2>Recent Testimonials</h2>
-      {recentTestimonials.map((testimonial, i) => (
-        <TestimonialCard key={i} testimonial={testimonial}/>
-      ))}*/}
-
-      <Carousel
-        items={[
-          {
-            body: `<p>Extend default theme with any amount of additional colors, replace shadows, radius, spacing, fonts and many other properties to match your design requirements. Mantine theme is just an object, you can subscribe to it in any part of application via context and use it to build your own components.</p>`,
-            createdAt: new Date().toLocaleDateString(),
-            author: {
-              name: "John Doe",
-              image: "https://images.unsplash.com/photo-1624298357597-fd92dfbec01d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=80"
+    <Box sx={{backgroundColor: "#eee"}} pt="2rem" pb="2.5rem">
+      <Container size={HomePage.layoutSize}>
+        <Title order={2} mb="1rem">Recent Testimonials</Title>
+        <Carousel
+          items={[
+            {
+              body: `<p>Extend default theme with any amount of additional colors, replace shadows, radius, spacing, fonts and many other properties to match your design requirements. Mantine theme is just an object, you can subscribe to it in any part of application via context and use it to build your own components.</p>`,
+              createdAt: new Date().toLocaleDateString(),
+              author: {
+                name: "John Doe",
+                image: "https://images.unsplash.com/photo-1624298357597-fd92dfbec01d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=80"
+              },
             },
-          },
-          {
-            body: `<p>Replace shadows, radius, spacing, fonts and many other properties to match your design requirements. Mantine theme is just an object, you can subscribe to it in any part of application via context and use it to build your own components.</p>`,
-            createdAt: new Date().toLocaleDateString(),
-            author: {
-              name: "Jane Doe",
-              image: "https://images.unsplash.com/photo-1624298357597-fd92dfbec01d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=80"
-            },
-          }
-        ]}
-      />
-    </article>
+            {
+              body: `<p>Replace shadows, radius, spacing, fonts and many other properties to match your design requirements. Mantine theme is just an object, you can subscribe to it in any part of application via context and use it to build your own components.</p>`,
+              createdAt: new Date().toLocaleDateString(),
+              author: {
+                name: "Jane Doe",
+                image: "https://images.unsplash.com/photo-1624298357597-fd92dfbec01d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=80"
+              },
+            }
+          ]}
+        />
+      </Container>
+    </Box>
   </>
 }
 
-// TestimonialCard
-// type TestimonialCardProps = {
-//   testimonial: Testimonial
-// }
-//
-// function TestimonialCard({testimonial} : TestimonialCardProps) : JSX.Element {
-//   return <>
-//     <div>
-//       <div>
-//         <time dateTime={testimonial.createdAt}>
-//           {new Date(testimonial.createdAt).toLocaleDateString()}
-//         </time>
-//       </div>
-//       <div>
-//         <div dangerouslySetInnerHTML={{__html: testimonial.body.html}}/>
-//       </div>
-//     </div>
-//   </>
-// }
-
-HomePage.layoutSize = "lg" as const
+HomePage.layoutSize = "md" as const
 
 // SSR /////////////////////////////////////////////////////////////////////////////////////////////
 type Payload = {
