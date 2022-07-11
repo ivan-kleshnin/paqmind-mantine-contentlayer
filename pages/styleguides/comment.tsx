@@ -1,9 +1,9 @@
 import {
-  Box, Container, Text, Avatar, Group, TypographyStylesProvider, Paper,
+  Box, Container, Text, Avatar, Group, Paper,
   // useMantineTheme
 } from "@mantine/core"
 import React from "react"
-import {Link} from "components"
+import {Typography} from "components"
 
 const body = `
   <p>
@@ -51,12 +51,12 @@ function CommentCard({postedAt, body, author}: CommentCardProps) {
         <Avatar src={author.image} alt={author.name} radius="xl"/>
         <div>
           <Text component="strong">{author.name}</Text>
-          <Text size="sm">Fullstack Developer. <Link size="sm" href="#">Ivan Kleshnin</Link> was a mentor.</Text>
+          {/*<Text size="sm">Fullstack Developer. <Link size="sm" href="#">Ivan Kleshnin</Link> was a mentor.</Text>*/}
           <Text size="sm" color="dimmed">
             Posted: {postedAt}
           </Text>
         </div>
-        <TypographyStylesProvider sx={{paddingLeft: 38 + 16}}>
+        <Typography sx={{paddingLeft: 38 + 16}}>
           <Box
             className="anchorBox"
             sx={{
@@ -70,7 +70,7 @@ function CommentCard({postedAt, body, author}: CommentCardProps) {
             }}
             dangerouslySetInnerHTML={{__html: body}}
           />
-        </TypographyStylesProvider>
+        </Typography>
       </Group>
     </Paper>
   </>
