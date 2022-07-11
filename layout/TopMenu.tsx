@@ -21,19 +21,19 @@ export function TopMenu({opened, toggle}: TopMenuProps): JSX.Element {
       <Container sx={{height: "100%"}}>
         <Group position="apart" sx={{height: "100%"}}>
           <Group spacing={0} position="left" sx={{height: "100%"}}>
-            <Title mr="0.5rem" order={2}><Link href="/" asText>Q</Link></Title>
-            <Title mr="3rem" order={4}><Link href="/" asText>paqmind</Link></Title>
-            <MediaQuery smallerThan={breakpoint} styles={{display: "none"}}>
-              <Group spacing={32}>
+            <Link href="/" asText>
+              <Title mr="3rem" order={logoOrder}>PAQMIND</Title>
+            </Link>
+            <MediaQuery smallerThan="sm" styles={{display: "none"}}>
+              <Group spacing="2rem">
                 <Link href="/about" asText>
-                  About
+                  <Text size={itemSize}>About</Text>
                 </Link>
-                {" "}
                 <Link href="/testimonials" asText>
-                  Testimonials
+                  <Text size={itemSize}>Testimonials</Text>
                 </Link>
-                <Link href="https://paqmind.com/blog" asText>
-                  Blog
+                <Link href="/blog" asText>
+                  <Text size={itemSize}>Blog</Text>
                 </Link>
               </Group>
             </MediaQuery>
