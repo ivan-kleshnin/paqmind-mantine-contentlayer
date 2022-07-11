@@ -8,7 +8,7 @@ import "styles/reset.css"
 import "styles/prisma.css"
 
 export type NextPageWithLayout = NextPage & {
-  layoutSize?: "md" | "lg"
+  layoutSize?: "sm" | "md"
 }
 
 type AppPropsWithLayout = AppProps & {
@@ -26,8 +26,12 @@ export default function App({Component, pageProps}: AppPropsWithLayout): JSX.Ele
       withGlobalStyles
       withNormalizeCSS
       defaultProps={{
-        Anchor: {size: ""},
-        Code: {sx: {fontSize: "14px", padding: "4px 8px"}},
+        Anchor: {
+          size: "", sx: {fontFamily: "inherit"},
+        },
+        Code: {
+          sx: {fontSize: "14px", padding: "4px 8px"},
+        },
         Prism: {
           styles: {
             code: {fontSize: "14px"},
@@ -35,13 +39,24 @@ export default function App({Component, pageProps}: AppPropsWithLayout): JSX.Ele
             copy: {top: "20px"},
           }
         },
+        Blockquote: {
+          sx: {fontFamily: "'Source Serif Pro', serif", fontStyle: "italic"},
+        },
         Text: {size: ""},
       }}
       theme={{
-        fontFamily: "'Open Sans', sans-serif",
+        fontFamily: "'Source Sans Pro', sans-serif",
+        fontFamilyMonospace: "'Source Code Pro', monospace",
+        fontSizes: {
+          // xs: 16,
+          // sm: 18,
+          // md: 20,
+          // lg: 22,
+          // xl: 24,
+        },
         headings: {
-          fontFamily: "'Open Sans', sans-serif",
-          fontWeight: 600,
+          fontFamily: "'Source Serif Pro', serif",
+          fontWeight: 400,
         },
         colorScheme: "light",
         spacing: {

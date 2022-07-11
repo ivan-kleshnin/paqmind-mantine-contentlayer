@@ -9,13 +9,14 @@ export default class _Document extends Document {
   render() {
     return <>
       <Html lang="en">
-        <Head/>
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"/>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400..800&display=swap"
-          rel="stylesheet"
-        />
+        <Head>
+          <link href="https://fonts.googleapis.com" rel="preconnect"/>
+          <link href="https://fonts.gstatic.com" rel="preconnect" crossOrigin="anonymous"/>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400;1,600&family=Source+Serif+Pro:ital@0;1&display=swap"
+            rel="stylesheet"
+          />
+        </Head>
         <body>
           <Main/>
           <NextScript/>

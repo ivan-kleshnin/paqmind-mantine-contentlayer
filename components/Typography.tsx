@@ -34,6 +34,7 @@ const useStyles = createStyles((theme) => {
   return {
     root: {
       ...theme.fn.fontStyles(),
+
       color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
       lineHeight: theme.lineHeight,
       fontSize: theme.fontSizes.md,
@@ -104,7 +105,7 @@ const useStyles = createStyles((theme) => {
         color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
         backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.colors.gray[0],
         fontFamily: theme.fontFamilyMonospace,
-        fontSize: theme.fontSizes.sm,
+        fontSize: "14px",
         // border: `1px solid ${
         //   theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.colors.gray[3]
         // }`,
@@ -165,7 +166,22 @@ const useStyles = createStyles((theme) => {
       },
 
       "& blockquote": {
+        ":before": {
+          content: "'“'",
+          position: "absolute",
+          left: "-1.25rem",
+          top: "-0.75rem",
+          fontSize: "2.5rem",
+          color: "#f2e4e4",
+          fontStyle: "normal",
+        },
+        position: "relative",
+        backgroundColor: "#F8F0F0",
+        borderRadius: "4px",
+        // wordBreak: "break-all",
         fontSize: theme.fontSizes.lg,
+        fontFamily: "'Source Serif Pro', serif",
+        fontStyle: "italic",
         lineHeight: theme.lineHeight,
         margin: `${theme.spacing.md}px 0`,
         borderTopRightRadius: theme.radius.sm,
