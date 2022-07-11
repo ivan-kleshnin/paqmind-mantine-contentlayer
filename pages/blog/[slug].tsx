@@ -1,11 +1,11 @@
-import {Group, Text, Title} from "@mantine/core"
+import {Box, Code, Container, Divider, Text, Title} from "@mantine/core"
 import {Prism} from "@mantine/prism"
 import {Post, allPosts} from "contentlayer/generated"
 import {ParsedUrlQuery} from "querystring"
 import {GetStaticProps, GetStaticPaths} from "next"
 import Head from "next/head"
 import {useMDXComponent} from "next-contentlayer/hooks"
-import {Link, Typography} from "components"
+import {Group, Link, Typography} from "components"
 
 type PostPageProps = {
   post: Post
@@ -18,31 +18,38 @@ export default function PostPage({post} : PostPageProps) : JSX.Element {
     <Head>
       <title>{post.title}</title>
     </Head>
-    <article>
-      <Title order={1}>{post.title}</Title>
-      <Text color="dimmed" component="time" dateTime={post.createdAt}>
-        Posted: {new Date(post.createdAt).toLocaleDateString()} by Ivan Kleshnin
-      </Text>
-      <Typography>
-        <MDXContent components={{Group, Prism}}/>
-        <hr/>
-      </Typography>
-      {post.tags && Boolean(post.tags.length) &&
-        <Group mb={20}>
-          {
-            post.tags.map((tag, i) =>
-              <Link key={i} href="#">
-                <strong><code>#{tag.toLowerCase()}</code></strong>
-              </Link>
-            )
+    <Container size={PostPage.layoutSize} mt="2rem" mb="2.5rem">
+      <Box sx={{display: "grid", gap: "2rem", gridTemplateColumns: "9fr 3fr"}}>
+        <article>
+          <Title order={1}>{post.title}</Title>
+          <Text color="dimmed" component="time" dateTime={post.createdAt}>
+            Posted: {new Date(post.createdAt).toLocaleDateString()} by Ivan Kleshnin
+          </Text>
+          <Typography>
+            <MDXContent components={{Group, Prism}}/>
+            <Divider my="1rem" variant="dashed"/>
+          </Typography>
+          {post.tags && Boolean(post.tags.length) &&
+            <Group mb="1.25rem">
+              {
+                post.tags.map((tag, i) =>
+                  <Link key={i} href="#">
+                    <strong><Code>#{tag.toLowerCase()}</Code></strong>
+                  </Link>
+                )
+              }
+            </Group>
           }
-        </Group>
-      }
-    </article>
+        </article>
+        <aside style={{backgroundColor: "#eee", padding: "0 1rem"}}>
+          Time to read: 15 mins
+        </aside>
+      </Box>
+    </Container>
   </>
 }
 
-PostPage.layoutSize = "sm" as const
+PostPage.layoutSize = "md" as const
 
 // SSR /////////////////////////////////////////////////////////////////////////////////////////////
 type Payload = {
