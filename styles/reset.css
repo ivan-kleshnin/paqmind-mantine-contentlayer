@@ -14,9 +14,3 @@ html, body, #__next {
 blockquote > p {
 	margin: 0 !important;
 }
-
-/* blockquote is not styled like Blockquote in Mantine (bug) */
-blockquote {
-	background-color: #F8F0FC;
-	border-radius: 4px;
-}
