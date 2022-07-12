@@ -30,13 +30,13 @@ export default function App({Component, pageProps}: AppPropsWithLayout): JSX.Ele
           size: "", style: {fontFamily: "inherit"},
         },
         Code: {
-          sx: {color: "inherit", fontSize: "14px", padding: "4px 8px"},
+          sx: {color: "inherit", fontSize: "14px", padding: ".25rem .5rem"},
         },
         Prism: {
           styles: {
             code: {fontSize: "14px"},
-            line: {padding: "0 8px"},
-            copy: {top: "20px"},
+            line: {padding: "0 .5rem"},
+            copy: {top: "1.25rem"},
           }
         },
         Blockquote: {

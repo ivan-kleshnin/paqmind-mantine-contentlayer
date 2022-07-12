@@ -108,7 +108,7 @@ const useStyles = createStyles((theme) => {
 
       "& code": {
         lineHeight: theme.lineHeight,
-        padding: `4px ${theme.spacing.xs}px`,
+        padding: `.25rem .5rem`,
         borderRadius: theme.radius.sm,
         color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
         backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.colors.gray[0],
@@ -145,7 +145,7 @@ const useStyles = createStyles((theme) => {
           fontWeight: "bold",
           color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.colors.gray[7],
           fontSize: 14,
-          padding: "7px 10px",
+          padding: "7px 10px", // wtf
         },
 
         "& thead th": {
@@ -161,7 +161,7 @@ const useStyles = createStyles((theme) => {
         },
 
         "& td": {
-          padding: "7px 10px",
+          padding: "7px 10px", // wtf
           borderBottom: `1px solid ${
             theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
           }`,
@@ -191,10 +191,10 @@ const useStyles = createStyles((theme) => {
         fontFamily: "'Source Serif Pro', serif",
         fontStyle: "italic",
         lineHeight: theme.lineHeight,
-        margin: `${theme.spacing.md}px 0`,
+        margin: `1rem 0`,
         borderTopRightRadius: theme.radius.sm,
         borderBottomRightRadius: theme.radius.sm,
-        padding: `${theme.spacing.md}px ${theme.spacing.lg}px`,
+        padding: `1rem 1.25rem`,
         color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
 
         "& cite": {
