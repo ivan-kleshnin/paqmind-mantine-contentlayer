@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "dependencies": {
     "@fontsource/open-sans": "^4.5.10",
     "@mantine/core": "^4.2.11",
