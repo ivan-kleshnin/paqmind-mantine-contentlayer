@@ -5,7 +5,6 @@ export * from "./CommentCarousel"
 export * from "./CommentCard"
 export * from "./HorizontalCard"
 export * from "./Link"
-export * from "./FilterTags"
 export * from "./Tags"
 export * from "./Typography"
 

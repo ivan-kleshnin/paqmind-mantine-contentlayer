@@ -53,7 +53,7 @@ function TestimonialSection({accounts, testimonials}: TestimonialSectionProps): 
   })
 
   return <>
-    <Box sx={{backgroundColor: "#eee"}} pt="2rem" pb="2.5rem">
+    <Box sx={{backgroundColor: "#eee", height: "100%"}} pt="2rem" pb="2.5rem">
       <Container size={TestimonialsPage.layoutSize}>
         <Title order={2} mb="1rem">Testimonials to <Link href="#">Ivan Kleshnin</Link></Title>
         <Stack spacing="1rem">

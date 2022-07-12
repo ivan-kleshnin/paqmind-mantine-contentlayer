@@ -1,4 +1,5 @@
 import {Box, Paper, Text, Title} from "@mantine/core"
+import {useRouter} from "next/router"
 import React from "react"
 import {Link, Tags} from "components"
 
@@ -11,6 +12,8 @@ interface HorizontalCardProps {
 }
 
 export function HorizontalCard({postedAt, url, title, intro, tags}: HorizontalCardProps) {
+  const router = useRouter()
+
   return <>
     <Paper
       p="1.5rem"
@@ -35,7 +38,7 @@ export function HorizontalCard({postedAt, url, title, intro, tags}: HorizontalCa
         Posted: {new Date(postedAt).toLocaleDateString()}
       </Text>
       <Box my="1rem" dangerouslySetInnerHTML={{__html: intro}}/>
-      <Tags tags={tags}/>
+      <Tags tags={tags} selectedTag={router.query.tag as string | undefined}/>
     </Paper>
   </>
 }

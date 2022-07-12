@@ -27,7 +27,7 @@ export default function App({Component, pageProps}: AppPropsWithLayout): JSX.Ele
       withNormalizeCSS
       defaultProps={{
         Anchor: {
-          size: "", sx: {fontFamily: "inherit"},
+          size: "", style: {fontFamily: "inherit"},
         },
         Code: {
           sx: {color: "inherit", fontSize: "14px", padding: "4px 8px"},

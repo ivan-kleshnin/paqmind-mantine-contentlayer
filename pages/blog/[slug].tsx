@@ -4,6 +4,7 @@ import {Post, allPosts} from "contentlayer/generated"
 import {ParsedUrlQuery} from "querystring"
 import {GetStaticProps, GetStaticPaths} from "next"
 import Head from "next/head"
+import {useRouter} from "next/router"
 import {useMDXComponent} from "next-contentlayer/hooks"
 import {Group, Tags, Typography} from "components"
 
@@ -12,6 +13,7 @@ type PostPageProps = {
 }
 
 export default function PostPage({post} : PostPageProps) : JSX.Element {
+  const router = useRouter()
   const MDXContent = useMDXComponent(post.body.code)
 
   return <>
@@ -29,7 +31,7 @@ export default function PostPage({post} : PostPageProps) : JSX.Element {
             <MDXContent components={{Group, Prism, SimpleGrid}}/>
             <Divider my="1rem" variant="dashed"/>
           </Typography>
-          <Tags tags={post.tags}/>
+          <Tags tags={post.tags} selectedTag={router.query.tag as string | undefined}/>
         </article>
         <aside style={{backgroundColor: "#eee", padding: "0 1rem"}}>
           Time to read: 15 mins

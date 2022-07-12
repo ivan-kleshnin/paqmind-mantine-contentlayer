@@ -4,9 +4,10 @@ import {Group, Link} from "components"
 
 export type TagsProps = {
   tags?: string[]
+  selectedTag?: string
 }
 
-export function Tags({tags}: TagsProps): JSX.Element {
+export function Tags({tags, selectedTag}: TagsProps): JSX.Element {
   if (!tags || !tags.length) {
     return <></>
   }
@@ -14,13 +15,14 @@ export function Tags({tags}: TagsProps): JSX.Element {
   return <Group>
     {
       tags.map((tag, i) =>
-        <Link key={i} href="#">
-          <strong>
-            <Code style={{background: "none", padding: 0}}>
-              #{tag.toLowerCase()}
-            </Code>
-          </strong>
-        </Link>
+        <strong key={i}>
+          <Code style={{backgroundColor: "inherit", padding: 0}}>
+            {(selectedTag && tag.toLowerCase() == selectedTag.toLowerCase())
+              ? <Link href="/blog" style={{color: "black", fontFamily: "inherit"}}>#{tag.toLowerCase()}</Link>
+              : <Link href={`/blog?tag=${tag.toLowerCase()}`}>#{tag.toLowerCase()}</Link>
+            }
+          </Code>
+        </strong>
       )
     }
   </Group>
