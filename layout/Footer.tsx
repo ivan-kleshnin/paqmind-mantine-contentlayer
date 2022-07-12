@@ -18,7 +18,7 @@ export function AppFooter(/*{size}: AppFooterProps*/): JSX.Element {
               &copy; Paqmind Team, 2022
             </Title>
             <Box component="ul" mt="1.25rem" sx={{listStyleType: "none", "& li": {marginTop: 8}}}>
-              {/*<li>Terms of use</li>*/}
+              <li><Link asText href="/terms-of-use">Terms of use</Link></li>
               {/*<li>Privacy policy</li>*/}
               {/*<li>Offer</li>*/}
               {/*<li>Thank you</li>*/}

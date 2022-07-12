@@ -56,7 +56,7 @@ function TestimonialSection({accounts, testimonials}: TestimonialSectionProps): 
   return <>
     <Box sx={{backgroundColor: "#eee"}} pt="2rem" pb="2.5rem">
       <Container size={BlogPage.layoutSize}>
-        <Title order={2} mb="1rem">Mentorship Testimonials</Title>
+        <Title order={2} mb="1rem">Mentors' Testimonials</Title>
         <Stack spacing="1rem">
           {enrichedTestimonials.map((testimonial, i) =>
             <CommentCard key={i} {...testimonial}/>

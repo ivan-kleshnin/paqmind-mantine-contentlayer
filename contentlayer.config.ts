@@ -119,7 +119,7 @@ const Testimonial = defineDocumentType(() => ({
 
 const Page = defineDocumentType(() => ({
   name: "Page",
-  filePathPattern: "*.mdx",
+  filePathPattern: "*.{md,mdx}",
   contentType: "mdx",
   fields: {
     title: {
@@ -139,7 +139,7 @@ const Page = defineDocumentType(() => ({
 
 const Post = defineDocumentType(() => ({
   name: "Post",
-  filePathPattern: "blog/*.mdx",
+  filePathPattern: "blog/*.{md,mdx}",
   contentType: "mdx",
   fields: {
     title: {

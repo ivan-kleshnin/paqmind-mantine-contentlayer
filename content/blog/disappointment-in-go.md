@@ -3,7 +3,7 @@ title: Disappointment in Go
 intro: | 
   Some reflections on my learning experience with Go. It's far worse than I expected!
 createdAt: 2022-06-15
-tags: [Go]
+tags: [Go, Deno]
 ---
 
 So I've spent 5 days making myself familiar with Go. From what I heard before, 
@@ -31,11 +31,12 @@ There're no type constants, no HO functions, no unions / sum types (omg), no tup
 And, sorry, I don't buy the argument that generics are an "Advanced Feature". Unlike HKTs or 
 conditional types, generics is just an abstraction one level above the ground.
 
-> To not bloat the post I've found a good article from a person who spent much more time with the language:
+To not bloat the post I can share a good article from a guy who spent much more time learning Go:
+
+> Golang is not a good language.
 > <cite>https://xetera.dev/thoughts-on-go/</cite> 
 
-I largely agree with its message, except maybe the conclusion to "use Rust" – because it's a language 
-of a different niche.
+I largely agree with the message except, maybe, the final recommendation to "use Rust" – as it's a language of a different niche.
 
 I can see how Deno will expand and outcompete Go which, at this point, is just a more civilised Ruby. 
 RoR developers switching to Go at least make sense (dynamic -> static types). It's much harder to 

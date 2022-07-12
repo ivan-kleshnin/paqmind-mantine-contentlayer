@@ -1,4 +1,4 @@
-import {Box, Code, Container, Divider, Text, Title} from "@mantine/core"
+import {Box, Code, Container, Divider, SimpleGrid, Text, Title} from "@mantine/core"
 import {Prism} from "@mantine/prism"
 import {Post, allPosts} from "contentlayer/generated"
 import {ParsedUrlQuery} from "querystring"
@@ -26,7 +26,7 @@ export default function PostPage({post} : PostPageProps) : JSX.Element {
             Posted: {new Date(post.createdAt).toLocaleDateString()} by Ivan Kleshnin
           </Text>
           <Typography>
-            <MDXContent components={{Group, Prism}}/>
+            <MDXContent components={{Group, Prism, SimpleGrid}}/>
             <Divider my="1rem" variant="dashed"/>
           </Typography>
           {post.tags && Boolean(post.tags.length) &&

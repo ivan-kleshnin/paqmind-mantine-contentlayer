@@ -28,7 +28,7 @@ export default function BlogPage({blog, posts}: BlogPageProps) : JSX.Element {
             <MDXContent components={{Group}}/>
           </Typography>
 
-          <Title order={2} mt="2rem" mb=".5rem">All Posts</Title>
+          <Title order={2} mt="2rem" mb="1rem">All Posts</Title>
           <Stack spacing="1rem">
             {posts.map((post, i) =>
               <HorizontalCard
