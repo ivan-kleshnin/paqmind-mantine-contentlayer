@@ -30,7 +30,7 @@ export function AppFooter(/*{size}: AppFooterProps*/): JSX.Element {
               <li>WIP</li>
               {/*<li>Mentors</li>*/}
               {/*<li>Tutorials</li>*/}
-              <li>Useful Links</li>
+              <li><Link asText href="/links">Useful Links</Link></li>
             </Box>
           </Grid.Col>
           <Grid.Col span={3}>
