@@ -1,6 +1,6 @@
-import {Code, Group, Paper, Text, Title} from "@mantine/core"
+import {Box, Paper, Text, Title} from "@mantine/core"
 import React from "react"
-import {Link, Typography} from "components"
+import {Link, Tags} from "components"
 
 interface HorizontalCardProps {
   postedAt: string
@@ -13,7 +13,7 @@ interface HorizontalCardProps {
 export function HorizontalCard({postedAt, url, title, intro, tags}: HorizontalCardProps) {
   return <>
     <Paper
-      px="1.5rem"
+      p="1.5rem"
       sx={{
         // position: "relative",
         // "&::before": {
@@ -28,26 +28,14 @@ export function HorizontalCard({postedAt, url, title, intro, tags}: HorizontalCa
       }}
     >
       {url
-        ? <Link asText href={url}><Title order={3} mt="1.25rem">{title}</Title></Link>
-        : <Title order={3} mt="1rem">{title}</Title>
+        ? <Link asText href={url}><Title order={3}>{title}</Title></Link>
+        : <Title order={3}>{title}</Title>
       }
       <Text color="dimmed" mb="-.5rem">
         Posted: {new Date(postedAt).toLocaleDateString()}
       </Text>
-      <Typography>
-        <div dangerouslySetInnerHTML={{__html: intro}}/>
-      </Typography>
-      {(tags && Boolean(tags.length)) &&
-        <Group mb="1.5rem">
-          {
-            tags.map((tag, i) =>
-              <Link key={i} href="#" asText>
-                <strong><Code>#{tag.toLowerCase()}</Code></strong>
-              </Link>
-            )
-          }
-        </Group>
-      }
+      <Box my="1rem" dangerouslySetInnerHTML={{__html: intro}}/>
+      <Tags tags={tags}/>
     </Paper>
   </>
 }

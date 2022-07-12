@@ -41,6 +41,14 @@ const useStyles = createStyles((theme) => {
 
       ...headings,
 
+      "& :first-child": {
+        marginTop: 0,
+      },
+
+      "& :last-child": {
+        marginBottom: 0,
+      },
+
       "& .ql-align-center": {
         textAlign: "center",
       },

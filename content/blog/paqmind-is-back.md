@@ -1,11 +1,11 @@
 ---
 title: Web Development changes since 2020
+createdAt: 2022-07-06
+tags: [Paqmind, Contentlayer, Mantine]
 intro: | 
   In web development, each year might feel like a decade. New tools, frameworks, services keep
   popping out at a freightening rate. We haven't blogged much since 2020, and now as we revive
   the platform, it's a good time to look back and see what changed in the industry over the past couple of years.
-createdAt: 2022-07-06
-tags: [Paqmind, Contentlayer, Mantine]
 ---
 
 **Paqmind.com** is not the only platform we write for but we definitely haven't blogged a lot since 2020.

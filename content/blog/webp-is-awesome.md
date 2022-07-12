@@ -2,11 +2,11 @@
 title: WEBP is awesome
 createdAt: 2019-09-9
 editedAt: 2019-09-23
+tags: [Performance]
 intro: |
   I have long ignored the presence of WEBP format. *Yeah, sure, it would be good to have site images
   10% or 20% smaller...* – I thought. Considering WEBP had abysmal browser support
   back then, I didn't even bother to check it in more details. Boy, was I surprised yesterday!
-tags: [Performance]
 ---
 
 I have long ignored the presence of WEBP format. *Yeah, sure, it would be good to have site images

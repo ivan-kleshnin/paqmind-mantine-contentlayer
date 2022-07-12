@@ -2,12 +2,12 @@
 title: Async patterns and scoping
 createdAt: 2016-11-03
 editedAt: 2016-11-03
+tags: [Async]
 intro: |
   Andre Staltz gave a great talk at [GOTO Copenhagen 2016](https://www.youtube.com/watch?v=Tkjg179M-Nc&index=1&list=LLxMufKDeaXcDXtZ4WS-CRhw).
   He generally touches a lot of topics in his talks. In this one, among the other things, Andre mentioned a possibility of mixing Monadic and Streaming IOs.
   I'll take the opportunity to elaborate this one a bit. One post won't be enough but shouldn't we start
   somewhere?
-tags: [Async]
 ---
 
 Andre Staltz gave a great talk at [GOTO Copenhagen 2016](https://www.youtube.com/watch?v=Tkjg179M-Nc&index=1&list=LLxMufKDeaXcDXtZ4WS-CRhw).

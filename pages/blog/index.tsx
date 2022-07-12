@@ -4,7 +4,7 @@ import {ParsedUrlQuery} from "querystring"
 import {GetStaticProps} from "next"
 import Head from "next/head"
 import {useMDXComponent} from "next-contentlayer/hooks"
-import {Group, HorizontalCard, Stack, Typography} from "components"
+import {Group, HorizontalCard, Stack, FilterTags, Typography} from "components"
 import * as U from "lib/utils"
 
 // BlogPage
@@ -14,6 +14,7 @@ type BlogPageProps = {
 }
 
 export default function BlogPage({blog, posts}: BlogPageProps) : JSX.Element {
+  const allTags = ["Mantine", "React", "Vue"]
   const MDXContent = useMDXComponent(blog.body.code)
 
   return <>
@@ -29,6 +30,11 @@ export default function BlogPage({blog, posts}: BlogPageProps) : JSX.Element {
           </Typography>
 
           <Title order={2} mt="2rem" mb="1rem">All Posts</Title>
+          {allTags.length &&
+            <Box mb="1.5rem">
+              <FilterTags tags={allTags}/>
+            </Box>
+          }
           <Stack spacing="1rem">
             {posts.map((post, i) =>
               <HorizontalCard

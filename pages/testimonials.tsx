@@ -7,8 +7,7 @@ import {ParsedUrlQuery} from "querystring"
 import {GetStaticProps} from "next"
 import Head from "next/head"
 import {useMDXComponent} from "next-contentlayer/hooks"
-import {CommentCard, Group, Stack, Typography} from "components"
-import BlogPage from "pages/blog"
+import {CommentCard, Group, Link, Stack, Typography} from "components"
 import * as U from "lib/utils"
 
 // TestimonialsPage
@@ -22,7 +21,7 @@ export default function TestimonialsPage({accounts, page, testimonials}: Testimo
       <title>{page.seoTitle || page.title}</title>
     </Head>
     <main>
-      <Container size={BlogPage.layoutSize} mt="2rem" mb="2.5rem">
+      <Container size={TestimonialsPage.layoutSize} mt="2rem" mb="2.5rem">
         <Title>{page.title}</Title>
         <Typography>
           <MDXContent components={{Group}}/>
@@ -55,8 +54,8 @@ function TestimonialSection({accounts, testimonials}: TestimonialSectionProps): 
 
   return <>
     <Box sx={{backgroundColor: "#eee"}} pt="2rem" pb="2.5rem">
-      <Container size={BlogPage.layoutSize}>
-        <Title order={2} mb="1rem">Mentors' Testimonials</Title>
+      <Container size={TestimonialsPage.layoutSize}>
+        <Title order={2} mb="1rem">Testimonials to <Link href="#">Ivan Kleshnin</Link></Title>
         <Stack spacing="1rem">
           {enrichedTestimonials.map((testimonial, i) =>
             <CommentCard key={i} {...testimonial}/>

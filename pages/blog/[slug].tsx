@@ -1,11 +1,11 @@
-import {Box, Code, Container, Divider, SimpleGrid, Text, Title} from "@mantine/core"
+import {Box, Container, Divider, SimpleGrid, Text, Title} from "@mantine/core"
 import {Prism} from "@mantine/prism"
 import {Post, allPosts} from "contentlayer/generated"
 import {ParsedUrlQuery} from "querystring"
 import {GetStaticProps, GetStaticPaths} from "next"
 import Head from "next/head"
 import {useMDXComponent} from "next-contentlayer/hooks"
-import {Group, Link, Typography} from "components"
+import {Group, Tags, Typography} from "components"
 
 type PostPageProps = {
   post: Post
@@ -29,17 +29,7 @@ export default function PostPage({post} : PostPageProps) : JSX.Element {
             <MDXContent components={{Group, Prism, SimpleGrid}}/>
             <Divider my="1rem" variant="dashed"/>
           </Typography>
-          {post.tags && Boolean(post.tags.length) &&
-            <Group mb="1.25rem">
-              {
-                post.tags.map((tag, i) =>
-                  <Link key={i} href="#">
-                    <strong><Code>#{tag.toLowerCase()}</Code></strong>
-                  </Link>
-                )
-              }
-            </Group>
-          }
+          <Tags tags={post.tags}/>
         </article>
         <aside style={{backgroundColor: "#eee", padding: "0 1rem"}}>
           Time to read: 15 mins

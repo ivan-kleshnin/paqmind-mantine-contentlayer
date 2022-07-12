@@ -30,7 +30,7 @@ export default function App({Component, pageProps}: AppPropsWithLayout): JSX.Ele
           size: "", sx: {fontFamily: "inherit"},
         },
         Code: {
-          sx: {fontSize: "14px", padding: "4px 8px"},
+          sx: {color: "inherit", fontSize: "14px", padding: "4px 8px"},
         },
         Prism: {
           styles: {

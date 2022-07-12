@@ -1,12 +1,13 @@
 ---
 title: Disappointment in Go
-intro: | 
-  Some reflections on my learning experience with Go. It's far worse than I expected!
 createdAt: 2022-06-15
 tags: [Go, Deno]
+intro: | 
+  Some reflections on my week of experience learning Go. It's far worse than I expected and 
+  I'm not going to continue. 
 ---
 
-So I've spent 5 days making myself familiar with Go. From what I heard before, 
+So I've spent about 5 days making myself familiar with Go. From what I heard before, 
 I expected this language to be simple, somewhat limited but "fun to use".
 
 Oh, the unfortunate reality! A lot of work was clearly put into the compiler, the toolkit. 

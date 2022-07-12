@@ -1,6 +1,5 @@
 import {
-  Avatar, Box, Divider, Paper, Text, Title,
-  /* useMantineTheme*/
+  Avatar, Box, Paper, Text, Title,
 } from "@mantine/core"
 import {/*Mail,*/ BrandGithub /*BrandFacebook, BrandLinkedin, BrandSkype, BrandTelegram, BrandTwitter, BrandYoutube*/} from "tabler-icons-react"
 import {Account} from "contentlayer/generated"
@@ -13,7 +12,7 @@ export type CommentCardProps = {
   author: Pick<Account, "fullname" | "title" | "avatarUrl" | "contacts">
 }
 
-export function CommentCard({createdAt, body, author}: CommentCardProps) {
+export function CommentCard({body, author}: CommentCardProps) {
   // const theme = useMantineTheme()
   // withBorder
 
@@ -72,7 +71,7 @@ export function CommentCard({createdAt, body, author}: CommentCardProps) {
             </Text>
           </Title>
           <Text color="dimmed">
-            {author.title}. Posted: {new Date(createdAt).toLocaleDateString()}
+            {author.title}
           </Text>
           <Typography mt=".5rem">
             <Box
@@ -87,12 +86,6 @@ export function CommentCard({createdAt, body, author}: CommentCardProps) {
               }}
               dangerouslySetInnerHTML={{__html: body}}
             />
-            <Divider my="1rem" variant="dashed"/>
-            <Text size="sm">
-              {/*The student finished the <Link href="#">React Fundamentals Development</Link> course.*/}
-              {/*{" "}*/}
-              Was mentored by <Link href="#">Ivan Kleshnin</Link>.
-            </Text>
           </Typography>
         </div>
       </Stack>
