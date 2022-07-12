@@ -19,7 +19,7 @@ export default function HomePage({accounts, home, recentPosts, recentTestimonial
 
   return <>
     <Head>
-      <title>{home.title}</title>
+      <title>{home.seoTitle || home.title}</title>
     </Head>
     <main>
       <Container size={HomePage.layoutSize} mt="2rem" mb="2.5rem">

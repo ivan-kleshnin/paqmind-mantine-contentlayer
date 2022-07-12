@@ -19,7 +19,7 @@ export default function TestimonialsPage({accounts, page, testimonials}: Testimo
 
   return <>
     <Head>
-      <title>{page.title}</title>
+      <title>{page.seoTitle || page.title}</title>
     </Head>
     <main>
       <Container size={BlogPage.layoutSize} mt="2rem" mb="2.5rem">

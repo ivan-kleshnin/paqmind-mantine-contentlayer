@@ -16,7 +16,7 @@ export default function PostPage({post} : PostPageProps) : JSX.Element {
 
   return <>
     <Head>
-      <title>{post.title}</title>
+      <title>{post.seoTitle || post.title}</title>
     </Head>
     <Container size={PostPage.layoutSize} mt="2rem" mb="2.5rem">
       <Box sx={{display: "grid", gap: "2rem", gridTemplateColumns: "9fr 3fr"}}>

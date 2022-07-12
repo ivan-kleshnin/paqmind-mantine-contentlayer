@@ -18,7 +18,7 @@ export default function BlogPage({blog, posts}: BlogPageProps) : JSX.Element {
 
   return <>
     <Head>
-      <title>{blog.title}</title>
+      <title>{blog.seoTitle || blog.title}</title>
     </Head>
     <Box sx={{backgroundColor: "#eee"}} pt="2rem" pb="2.5rem">
       <Container size={BlogPage.layoutSize}>

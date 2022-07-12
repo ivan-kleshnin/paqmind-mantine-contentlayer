@@ -15,7 +15,7 @@ export default function AnyPage({page} : AnyPageProps) : JSX.Element {
 
   return <>
     <Head>
-      <title>{page.title}</title>
+      <title>{page.seoTitle || page.title}</title>
     </Head>
     <Container size={AnyPage.layoutSize} mt="2rem" mb="2.5rem">
       <article>

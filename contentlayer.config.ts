@@ -31,47 +31,47 @@ const Account = defineDocumentType(() => ({
     },
 
     birthDate: {
-      type: "date", required: false,
+      type: "date",
     },
 
     maritalStatus: {
-      type: "string", required: false,
+      type: "string",
     },
 
     stats: {
-      type: "json", required: false,
+      type: "json",
     },
 
     skills: {
-      type: "json", required: false,
+      type: "json",
     },
 
     programs: {
-      type: "json", required: false,
+      type: "json",
     },
 
     education: {
-      type: "json", required: false,
+      type: "json",
     },
 
     interests: {
-      type: "json", required: false,
+      type: "json",
     },
 
     languages: {
-      type: "json", required: false,
+      type: "json",
     },
 
     studentsProjects: {
-      type: "json", required: false,
+      type: "json",
     },
 
     avatarUrl: {
-      type: "string", required: false,
+      type: "string",
     },
 
     avatarUrl2: {
-      type: "string", required: false,
+      type: "string",
     },
 
     createdAt: {
@@ -125,6 +125,9 @@ const Page = defineDocumentType(() => ({
     title: {
       type: "string", required: true,
     },
+    seoTitle: {
+      type: "string",
+    },
   },
   computedFields: {
     url: {
@@ -142,6 +145,9 @@ const Post = defineDocumentType(() => ({
     title: {
       type: "string", required: true,
     },
+    seoTitle: {
+      type: "string",
+    },
     intro: {
       type: "markdown", required: true,
     },
@@ -149,7 +155,7 @@ const Post = defineDocumentType(() => ({
       type: "date", required: true,
     },
     editedAt: {
-      type: "date", required: false,
+      type: "date",
     },
     tags: {
       type: "list",
