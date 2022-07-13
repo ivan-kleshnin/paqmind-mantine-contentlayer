@@ -146,24 +146,28 @@ unicode character which can break when collaborating! Can you see why I called 2
 
 ## Mantine :lipstick:
 
-The last tool I'd like to give a special mention is [Mantine](https://mantine.dev/). Component libraries
+The last tool I'd like to give a mention is [Mantine](https://mantine.dev/). Component libraries
 are probably among the most time-consuming software projects (it's never enough widgets and features). 
-Some tools have progressed significantly in recent years. For example, [Material UI](https://mui.com/) was rewritten from JSS to Emotion
-and now feels much more comfortable to use. Some tools continued to grow steadily, like [Chakra](https://chakra-ui.com/).
-And finally there're some new players like Mantine which we selected to style this blog. It's a new
-library developed by a single person but the quality and quantity of components is outstanding. Mantine
-is based on Emotion and therefore positions itself as a direct MUI alternative.
+Some tools have progressed significantly in recent years. For example, [Material UI](https://mui.com/) 
+was rewritten from JSS to Emotion and now feels much more comfortable to use. Some tools continued to 
+grow steadily, like [Chakra](https://chakra-ui.com/). And finally there're some new players like Mantine
+which was selected to style this blog. It's a new library developed by a single person but the quality 
+and quantity of components is outstanding. Mantine is based on Emotion and therefore positions itself 
+as a direct MUI alternative.
 
 MUI is very solid and mature styleguide but it's getting overused so we decided to try something fresh.
 We've made a comparison table where Mantine looked much better than Chakra: more widgets, hooks, helpers
-and all that for free. So we decided to give it a go and have no regrets so far.
+and all that for free. So we decided to give it a go.
 
-Don't be fooled – it's a very new tool and you'll have to hack around minor issues. But mostly
-visual, I'm yet to encounter a serious bug yet. Not recommending it for commercial products though,
-because there's no solid community yet. And we know [what happens](https://elm-lang.org/) when an
-otherwise great project fails at community making. On the flip side, Mantine's sources are among the most
-readable of what I seen (compare to MUI, dear) so you shouldn't have troubles if you'll need to fork
-them and support for some time.
+I'm going to describe my experience with Mantine in a separate article. On a brief spoiler note:
+it's similar to other component libraries in a sense that it's might be great for prototyping but 
+feels way too rigid for a complete product. You'll have to write a lot of hacky code to reset unfortunate
+defaults and behaviors. The next major version, 5.0, should come up with a fully "unstyled" mode 
+so I'll give it another go then. On the positive side of things are documentation and sources which 
+are unusually clear and readable.
+
+For now I'm not recommending Mantine for commercial products (go check Github issues) but it's 
+definitely a project to keep an eye on.
 
 ## Links :chains:
 
